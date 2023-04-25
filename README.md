@@ -108,7 +108,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 **A:** The `tag:` URI scheme would not allow to form valid URLs. This was considered a major disadvantage, see also question above on "Why is a PAC-ID represented as an https URL?".
 
-**Q: Is the usage of PAC-IDs limited to liefe science / laboratories?**
+**Q: Is the usage of PAC-IDs limited to life science / laboratories?**
 
 **A:** Not by design. In principle PAC-IDs could be used everywhere where real work objects need to be unambiguously identified and referred to among otherwise unrelated systems.
 
@@ -128,7 +128,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 **A:** According to the specification, it is recommended that the textual representation of the PAC-ID is a browsable URL. You are free to create appropriate "forwards" to direct browsers to the correct site.
 
-**Q: What shall I do if the QR code representation of a PAC-ID gets to big to attach to the target item?**
+**Q: What shall I do if the QR code representation of a PAC-ID gets too big to attach to the target item?**
 
 **A:** You may use another representation than QR codes, such as data matrix codes or NFC tags. Another option is to use shorter `issuer`, `category` or `identifiers`.
 
@@ -138,7 +138,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 **Q: How do I embed version numbers?**
 
-**A:** Version numbers are not specified in order to keep PAC-IDs simple. If your version number refers to the service version, it is recommendet to append them to the `category`, like in this example: `https://pac.apinilabs.com/myapp/v2?i=MDEyMzQ1Njc4OTAxMjM0NQ`.
+**A:** Version numbers are not specified in order to keep PAC-IDs simple. If your version number refers to the service version, it is recommended to append them to the `category`, like in this example: `https://pac.apinilabs.com/myapp/v2?i=MDEyMzQ1Njc4OTAxMjM0NQ`.
 If the identifiers are versioned, it is recommended to append a postfix to the identifier, with '~' as separating character,
 like in this example: `https://pac.apinilabs.com/myapp?i=MDEyMzQ1Njc4OTAxMjM0NQ~v2`.
 
