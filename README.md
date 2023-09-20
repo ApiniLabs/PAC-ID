@@ -2,15 +2,15 @@
 
 ## Introduction
 
-Laboratory software often needs to unambiguously refer to real world objects and data. Typically, this is achieved by assigning unique identifiers to objects and data sets. Unfortunately, as of today, each software product has its own proprietary identifiers. This causes two main issues:
+Laboratory software often needs to unambiguously refer to real world objects and data. Typically, this is achieved by assigning unique identifiers to objects and data sets. Unfortunately, as of today, each software product creates its own proprietary identifiers. This causes two main issues:
 
-- It is not possible to determine the system who issued the identifier.
+- It is not possible to determine the system which issued the identifier.
 
 - The same items can have multiple identifiers. This is not a problem by default, however, as soon as one starts labelling items with identifiers, too many labels are either impossible to place or lead to usability issues.
 
 Hence, to address this, we propose an easy to implement, standardized **publicly addressable content identifier (“PAC-ID”)**.
 
-Examples of what can be referenced using PAC-ID's accross systems:
+Examples of what can be referenced using PAC-ID's across systems:
 
 - substances, such as stock chemicals, reagents, standards or intermediates.
 
@@ -30,7 +30,7 @@ PAC-IDs can also be represented in textual form:
 
 https: // pac. `apinilabs.com` / `myapp` ?i= `MDEyMzQ1Njc4OTAxMjM0NQ`
 
-The **issuer** (in this example `apinilabs.com`), **category** (`myapp`) and **identifier** (`MDEyMzQ1Njc4OTAxMjM0NQ`), that are explained further down, are highlighted.
+The **issuer** (in this example `apinilabs.com`), **category** (`myapp`) and **identifier** (`MDEyMzQ1Njc4OTAxMjM0NQ`), which are explained further down, are highlighted.
 
 ## Specification
 
@@ -38,13 +38,13 @@ A `PAC-ID` SHALL be composed of three parts. It is REQUIRED that the combination
 
 | **Part** | **Name** | **Meaning** |
 | :--- | :--- | :--- |
-| 1 | `issuer` | The party who issued the identifier and knows what the identifier refers to. This string MUST be a valid domain name and SHOULD be a registered and active domain name. |
+| 1 | `issuer` | The party which issued the identifier and knows what the identifier refers to. This string MUST be a valid domain name and SHOULD be a registered and active domain name. |
 | 2 | `category` | The category, e.g. application, service or product the identifier is related to or the type of identifier, etc. This string MUST be a valid `path` component according to [RFC 3986](https://www.ietf.org/rfc/rfc3986.html); i.e. it MAY also be an empty string. |
 | 3 | `identifier` | The identifier itself. This string MUST be a valid `query` component according to [RFC 3986](https://www.ietf.org/rfc/rfc3986.html). It is RECOMMENDED to use a 128bit UUID as identifier (encoded as base64url according to [RFC 4648](https://www.ietf.org/rfc/rfc4648.html)). |
 
 ## Textual Representation
 
-A `PAC-ID` shall be represented as a text in the form of an `URI` (according to [RFC 3986](https://www.ietf.org/rfc/rfc3986.html)) as follows. It is recommended that the `PAC-ID` is a `URL` that locates a human readable web page which at least discloses information about the `issuer`.
+A `PAC-ID` shall be represented as a text in the form of a `URI` (according to [RFC 3986](https://www.ietf.org/rfc/rfc3986.html)) as follows. It is recommended that the `PAC-ID` is a `URL` that locates a human readable web page which at least discloses information about the `issuer`.
 
 | **URI Component\*** | **Value** |
 | :--- | :--- |
@@ -59,7 +59,7 @@ All other URI components MUST be empty.
 
 ### Example
 
-Let us craete a string representation of a PAC-ID with `issuer`="apinilabs.com", `category`="myapp" and `identifier`="30313233-3435-3637-3839-303132333435". As recommended, the identifier is a 128bit UUID. In order to save space in the textual representation, the UUID is base64url encoded.
+Let us create a string representation of a PAC-ID with the `issuer` "apinilabs.com", the `category` "myapp" and the `identifier` "30313233-3435-3637-3839-303132333435". As recommended, the identifier is a 128-bit UUID. In order to save space in the textual representation, the UUID is base64url encoded.
 
 The resulting PAC-ID in textual representation is: `https://pac.apinilabs.com/myapp?i=MDEyMzQ1Njc4OTAxMjM0NQ`
 
@@ -77,7 +77,7 @@ If a PAC-ID is represented as QR code or data matrix code, a visual must be adde
 
 - QR code: on any of the sides, 4 modules space, add 5x5 module size squares, 1 module space, minimum 1 module (then in the center) or max 25 modules (quiet zone = 4 modules)
 
-- data matrix code: same as above, but 1 symbol space (quiet zone = 1 symbol)
+- Data matrix code: same as above, but 1 symbol space (quiet zone = 1 symbol)
 
 If a PAC-ID is represented by NFC, then next to the “NFC” Logo, add a visual like for the QR, but pixel size must correspond to a 72dpi raster.
 
@@ -89,7 +89,7 @@ The PAC-ID `https://pac.apinilabs.com/myapp?i=MDEyMzQ1Njc4OTAxMjM0NQ` from the e
 
 ## Terminology Used
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC2119](https://www.ietf.org/rfc/rfc2119.txt) "Key words for use in RFCs to Indicate Requirement Levels".
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt) "Key words for use in RFCs to Indicate Requirement Levels".
 
 ## FAQ
 **Q: Why is a PAC-ID represented as an https URL?**
@@ -110,11 +110,11 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 **Q: Is the usage of PAC-IDs limited to life science / laboratories?**
 
-**A:** Not by design. In principle PAC-IDs could be used everywhere where real work objects need to be unambiguously identified and referred to among otherwise unrelated systems.
+**A:** Not by design. In principle PAC-IDs could be used everywhere where real world objects need to be unambiguously identified and referred to among otherwise unrelated systems.
 
 **Q: How do I translate an ID into a PAC-ID when I am not the issuer of the ID?**
 
-**A:** Every ID can be translated into a valid PAC-ID using the specification above, if the `issuer`and `category`are known.
+**A:** Every ID can be translated into a valid PAC-ID using the specification above, if the `issuer` and `category` are known.
 
 **Q: Can I rely on this PAC-ID specification staying stable?**
 
@@ -144,9 +144,9 @@ like in this example: `https://pac.apinilabs.com/myapp?i=MDEyMzQ1Njc4OTAxMjM0NQ~
 
 **Q: How do I identify a well or multiple wells of an MTP (which has a PAC-ID itself) by a PAC-ID?**
 
-**A:** MTP well identifiers are not specified in order to keep PAC-IDs simple. If you like to identify wells by coordinates, it is recommended to append it to the identifier with "." as separator like in this example: `https://pac.apinilabs.com/myapp?i=MDEyMzQ1Njc4OTAxMjM0NQ.H7`. Unfortunately there is no standardized naming of wells, however the following scheme is widely used: 96-well plate coordinates range from `A1` to `H12`, 384-well plates coordinates range from `A1` to `P24`, 1536-well plates coordinates range from `A1` to `AF48`, ... Multiple wells (`E8;A5`) and well ranges (`A1:H1`) or combinations (`E8:H8;A9:D9`) can be addressed using "Excel" cell addressing style. Do not forget to URL encode the query string, like in this example for addressing well range `E8:H8;A9:D9`: `https://pac.apinilabs.com/myapp?i=MDEyMzQ1Njc4OTAxMjM0NQ&l=E8%3AH8%3BA9%3AD9`
+**A:** MTP well identifiers are not specified in order to keep PAC-IDs simple. If you like to identify wells by coordinates, it is recommended to append it to the identifier with "." as separator like in this example: `https://pac.apinilabs.com/myapp?i=MDEyMzQ1Njc4OTAxMjM0NQ.H7`. Unfortunately, there is no standardized naming of wells, however the following scheme is widely used: 96-well plate coordinates range from `A1` to `H12`, 384-well plates coordinates range from `A1` to `P24`, 1536-well plates coordinates range from `A1` to `AF48`, ... Multiple wells (`E8;A5`) and well ranges (`A1:H1`) or combinations (`E8:H8;A9:D9`) can be addressed using "Excel" cell addressing style. Do not forget to URL encode the query string, like in this example for addressing well range `E8:H8;A9:D9`: `https://pac.apinilabs.com/myapp?i=MDEyMzQ1Njc4OTAxMjM0NQ&l=E8%3AH8%3BA9%3AD9`
 
-**Q: I like that a PAC-ID points to my own (proprietary or local) service instances, e.g. to access my own ELN, LIMS, inventory system, ...?**
+**Q: I like that a PAC-ID points to my own (proprietary or local) service instances, e.g. to access my own ELN, LIMS, inventory system, ...**
 
 **A:** This is provided as a separate Smart Building Block named PAC-Resolver.
 
