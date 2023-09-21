@@ -39,8 +39,8 @@ A `PAC-ID` SHALL be composed of three parts. It is REQUIRED that the combination
 | **Part** | **Name** | **Meaning** | **Examples** |
 | :--- | :--- | :--- | :--- |
 | 1 | `issuer` | The party which issued the identifier and knows what the identifier refers to. This string MUST be a valid domain name according to [RFC 1035](https://www.ietf.org/rfc/rfc1035.html) and SHOULD be a registered and active domain name. | "apinilabs.com", "metorius.com" |
-| 2 | `category` | The category, e.g. application, service or product the identifier is related to or the type of identifier, etc. This string MUST be a valid `path` component according to [RFC 3986](https://www.ietf.org/rfc/rfc3986.html); i.e. it MAY also be an empty string. | "lims", "eln", "inventory", "sn", "cds" |
-| 3 | `identifier` | The identifier itself. This string MUST be a valid `query` component according to [RFC 3986](https://www.ietf.org/rfc/rfc3986.html). | "123", "s-45". "454c2493-202f-4efd-b7a6-d0750f764596" |
+| 2 | `category` | The category, e.g. application, service or product the identifier is related to or the type of identifier, etc. This string MUST be a valid `path` component according to [RFC 3986](https://www.ietf.org/rfc/rfc3986.html) and MUST not exceed 256 characters; i.e. it MAY also be an empty string. | "lims", "eln", "inventory", "sn", "cds" |
+| 3 | `identifier` | The identifier itself. This string MUST be a valid `query` component according to [RFC 3986](https://www.ietf.org/rfc/rfc3986.html) and MUST not exceed 256 characters. | "123", "s-45". "454c2493-202f-4efd-b7a6-d0750f764596" |
 
 ## Textual Representation
 
