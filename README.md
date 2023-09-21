@@ -61,7 +61,7 @@ All other URI components MUST be empty.
 
 A PAC-ID with the `issuer` "apinilabs.com", the `category` "lims-a" and the `identifier` "71728882-8c0d-4939-9947-31877854519c". As recommended, the identifier is a 128-bit UUID (according to [RFC 4122](https://www.ietf.org/rfc/rfc4122.html)). In order to save space in the textual representation, the UUID is base64url encoded (according to [RFC 4648](https://www.ietf.org/rfc/rfc4648.html)).
 
-The resulting PAC-ID in textual representation is: `https://pac.apinilabs.com/lims-a?i=NzE3Mjg4ODItOGMwZC00OTM5LTk5NDctMzE4Nzc4NTQ1MTlj`
+The resulting PAC-ID in textual representation is: `https://pac.apinilabs.com/lims-a?i=cXKIgowNSTmZRzGHeFRRnA==`
 
 ## Other Representations
 
@@ -138,7 +138,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 **Q: Why not having a visual element inside the QR code?**
 
-**A:** Putting an icon or any other visual element in the center of a QR code the free storage space for content will be decreased. Since we want the QR codes as small as possible wo placed the visual element next to the QR code.
+**A:** Putting an icon or any other visual element in the center of a QR code the free storage space for content will be decreased. Since we want the QR codes as small as possible wo placed the visual element next to the QR code. Also, rendering QR codes with an icon inside to a small display or label with low resolution is not that easy.
 
 **Q: I have a better idea, how can I contribute?**
 
