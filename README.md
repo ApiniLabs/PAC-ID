@@ -36,11 +36,11 @@ The **issuer** (in this example `apinilabs.com`), **category** (`myapp`) and **i
 
 A `PAC-ID` SHALL be composed of three parts. It is REQUIRED that the combination of the three parts is globally unique.
 
-| **Part** | **Name** | **Meaning** |
-| :--- | :--- | :--- |
-| 1 | `issuer` | The party which issued the identifier and knows what the identifier refers to. This string MUST be a valid domain name and SHOULD be a registered and active domain name. |
-| 2 | `category` | The category, e.g. application, service or product the identifier is related to or the type of identifier, etc. This string MUST be a valid `path` component according to [RFC 3986](https://www.ietf.org/rfc/rfc3986.html); i.e. it MAY also be an empty string. |
-| 3 | `identifier` | The identifier itself. This string MUST be a valid `query` component according to [RFC 3986](https://www.ietf.org/rfc/rfc3986.html). It is RECOMMENDED to use a 128bit UUID as identifier (encoded as base64url according to [RFC 4648](https://www.ietf.org/rfc/rfc4648.html)). |
+| **Part** | **Name** | **Meaning** | **Examples** |
+| :--- | :--- | :--- | :--- |
+| 1 | `issuer` | The party which issued the identifier and knows what the identifier refers to. This string MUST be a valid domain name according to [RFC 1035](https://www.ietf.org/rfc/rfc1035.html) and SHOULD be a registered and active domain name. | "apinilabs.com", "metorius.com" |
+| 2 | `category` | The category, e.g. application, service or product the identifier is related to or the type of identifier, etc. This string MUST be a valid `path` component according to [RFC 3986](https://www.ietf.org/rfc/rfc3986.html); i.e. it MAY also be an empty string. | "lims", "eln", "inventory", "sn", "cds" |
+| 3 | `identifier` | The identifier itself. This string MUST be a valid `query` component according to [RFC 3986](https://www.ietf.org/rfc/rfc3986.html). It is RECOMMENDED to use a 128bit UUID as identifier (encoded as base64url according to [RFC 4648](https://www.ietf.org/rfc/rfc4648.html)). | "123", "s-45". "454c2493-202f-4efd-b7a6-d0750f764596" |
 
 ## Textual Representation
 
@@ -53,15 +53,15 @@ A `PAC-ID` shall be represented as a text in the form of a `URI` (according to [
 | `path` | The `category` of the `PAC-ID`. The path component MUST be percent-encoded (“URL encoded”) when producing the URI. |
 | `query` | The `identifier` of the `PAC-ID`, prefixed by `"i="`. The identifier MUST be percent-encoded (“URL encoded”) when producing the URI. |
 
-\* according to [RFC 3986: Uniform Resource Identifier (URI): Generic Syntax (rfc-editor.org)](https://www.rfc-editor.org/rfc/rfc3986#appendix-A)
+\* according to [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986#appendix-A)
 
 All other URI components MUST be empty.
 
 ### Example
 
-Let us create a string representation of a PAC-ID with the `issuer` "apinilabs.com", the `category` "myapp" and the `identifier` "30313233-3435-3637-3839-303132333435". As recommended, the identifier is a 128-bit UUID. In order to save space in the textual representation, the UUID is base64url encoded.
+A PAC-ID with the `issuer` "apinilabs.com", the `category` "lims-a" and the `identifier` "71728882-8c0d-4939-9947-31877854519c". As recommended, the identifier is a 128-bit UUID (according to [RFC 4122](https://www.ietf.org/rfc/rfc4122.html)). In order to save space in the textual representation, the UUID is base64url encoded (according to [RFC 4648](https://www.ietf.org/rfc/rfc4648.html)).
 
-The resulting PAC-ID in textual representation is: `https://pac.apinilabs.com/myapp?i=MDEyMzQ1Njc4OTAxMjM0NQ`
+The resulting PAC-ID in textual representation is: `https://pac.apinilabs.com/lims-a?i=NzE3Mjg4ODItOGMwZC00OTM5LTk5NDctMzE4Nzc4NTQ1MTlj`
 
 ## Other Representations
 
@@ -73,7 +73,7 @@ A `PAC-ID` can also be represented by using other means that are capable of enco
 
 ### Visual Markers
 
-If a PAC-ID is represented as QR code or data matrix code, a visual must be added as follows:
+If a PAC-ID is represented as QR code or data matrix code, a visual marker must be added as follows:
 
 - QR code: on any of the sides, 4 modules space, add 5x5 module size squares, 1 module space, minimum 1 module (then in the center) or max 25 modules (quiet zone = 4 modules)
 
@@ -94,7 +94,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 ## FAQ
 **Q: Why is a PAC-ID represented as an https URL?**
 
-**A:** This has many advantages in terms of user experience. The biggest advantage is that PAC-IDs can directly be entered as address into a browser (or scanned via QR code for example) on almost any device. It was first considered to use a specific URI scheme like "pac:" but then discarded due to usability considerations. To be able to easily recognize a PAC-ID as such, it was decided to use the subdomain `pac.` instead.
+**A:** The biggest advantage is that PAC-IDs can directly be entered as address into a browser (or scanned via QR code for example) on almost any device. To be able to easily recognize a PAC-ID as such, it was decided to use the subdomain `pac.` instead.
 
 **Q: Why is the identifier of a PAC-ID located in the query string?**
 
@@ -102,7 +102,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 **Q: Why is the subdomain "pac." used?**
 
-**A:** The `issuer` of a PAC-ID usually corresponds to the same domain name as the product manufacturer who distributed a PAC-ID. As most manufacturer are running a "www" web site on their main domain, usually under control of the marketing department, it is much easier to release a PAC-ID resolver on a subdomain. See also question above on "Why is a PAC-ID represented as an https URL?".
+**A:** First of all, it's easy recognizable as a PAC-ID with this prefix/subdomain. Also, the `issuer` of a PAC-ID usually corresponds to the same domain name as the product manufacturer who distributed a PAC-ID. As most manufacturers are running a "www" web site on their main domain, usually under control of the marketing department, it is much easier to release a PAC-ID resolver on a subdomain than on a specific path like "/pac-id". See also question above on "Why is a PAC-ID represented as an https URL?".
 
 **Q: Why not using the ["tag:" scheme](https://en.wikipedia.org/wiki/Tag_URI_scheme)?**
 
@@ -132,23 +132,27 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 **A:** You may use another representation than QR codes, such as data matrix codes or NFC tags. Another option is to use shorter `issuer`, `category` or `identifiers`.
 
+**Q: Why not having a visual element inside the QR code?**
+
+**A:** Putting an icon or any other visual element in the center of a QR code the free storage space for content will be decreased. Since we want the QR codes as small as possible wo placed the visual element next to the QR code.
+
 **Q: I have a better idea, how can I contribute?**
 
-**A:** Create a new issue suggesting your contribution. Search if such an issue already exists. If you like, make changes, commit them and create a pull request for your changes to be reviewed and eventually merged.
+**A:** Create a new issue suggesting your contribution here: [PAC-ID Issues](https://github.com/ApiniLabs/PAC-ID/issues). Search if such an issue already exists. If you like, make changes, commit them and create a pull request for your changes to be reviewed and eventually merged.
 
 **Q: How do I embed version numbers?**
 
-**A:** Version numbers are not specified in order to keep PAC-IDs simple. If your version number refers to the service version, it is recommended to append them to the `category`, like in this example: `https://pac.apinilabs.com/myapp/v2?i=MDEyMzQ1Njc4OTAxMjM0NQ`.
+**A:** Version numbers are not specified in order to keep PAC-IDs simple. If your version number refers to the service version, it is recommended to append them to the `category`, like in this example: `myapp/v2`.
 If the identifiers are versioned, it is recommended to append a postfix to the identifier, with '~' as separating character,
-like in this example: `https://pac.apinilabs.com/myapp?i=MDEyMzQ1Njc4OTAxMjM0NQ~v2`.
+like in this example: `MDEyMzQ1Njc4OTAxMjM0NQ~v2`.
 
-**Q: How do I identify a well or multiple wells of an MTP (which has a PAC-ID itself) by a PAC-ID?**
+**Q: How do I identify a well or multiple wells of a microtiter plate (MTP) (which has a PAC-ID itself) by a PAC-ID?**
 
-**A:** MTP well identifiers are not specified in order to keep PAC-IDs simple. If you like to identify wells by coordinates, it is recommended to append it to the identifier with "." as separator like in this example: `https://pac.apinilabs.com/myapp?i=MDEyMzQ1Njc4OTAxMjM0NQ.H7`. Unfortunately, there is no standardized naming of wells, however the following scheme is widely used: 96-well plate coordinates range from `A1` to `H12`, 384-well plates coordinates range from `A1` to `P24`, 1536-well plates coordinates range from `A1` to `AF48`, ... Multiple wells (`E8;A5`) and well ranges (`A1:H1`) or combinations (`E8:H8;A9:D9`) can be addressed using "Excel" cell addressing style. Do not forget to URL encode the query string, like in this example for addressing well range `E8:H8;A9:D9`: `https://pac.apinilabs.com/myapp?i=MDEyMzQ1Njc4OTAxMjM0NQ&l=E8%3AH8%3BA9%3AD9`
+**A:** MTP well identifiers are not specified in order to keep PAC-IDs simple. If you like to identify wells by coordinates, it is recommended to append it to the identifier with "." as separator like in this example: `MDEyMzQ1Njc4OTAxMjM0NQ.H7`. Unfortunately, there is no standardized naming of wells, however the following scheme is widely used: 96-well plate coordinates range from `A1` to `H12`, 384-well plates coordinates range from `A1` to `P24`, 1536-well plates coordinates range from `A1` to `AF48`, ... Multiple wells (`E8;A5`) and well ranges (`A1:H1`) or combinations (`E8:H8;A9:D9`) can be addressed using "Excel" cell addressing style. Do not forget to URL encode the query string, like in this example for addressing well range `E8:H8;A9:D9`: `https://pac.apinilabs.com/myapp?i=MDEyMzQ1Njc4OTAxMjM0NQ&l=E8%3AH8%3BA9%3AD9`
 
 **Q: I like that a PAC-ID points to my own (proprietary or local) service instances, e.g. to access my own ELN, LIMS, inventory system, ...**
 
-**A:** This is provided as a separate Smart Building Block named PAC-Resolver.
+**A:** This is provided as a separate Smart Building Block named [PAC-Resolver](https://github.com/ApiniLabs/PAC-ID-Resolver).
 
 ## License
 
