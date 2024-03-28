@@ -52,7 +52,9 @@ PAC-ID’s MAY be transmitted by any means adequate for the corresponding serial
 
 If a PAC-ID is represented as QR code or data matrix code, a visual marker MUST be added.
 
-![A PAC-ID.](images/pac-id-example.jpg)
+![A PAC-ID.](images/pac-id-example.svg)
+
+An example PAC-ID.
 
 ##### Placement of the Visual Marker
 
@@ -61,7 +63,7 @@ If a PAC-ID is represented as QR code or data matrix code, a visual marker MUST 
 -   Visual markers placed at the bottom SHALL start from left to right. Right to Left is allowed when surrounded by RTL languages.
 -   Visual markers placed at the left, SHALL start from top to bottom.
 
-![A PAC-ID.](images/pac-id-visual-marker.jpg)
+![A PAC-ID.](images/pac-id-visual-marker.svg)
 
 ##### Visual Marker Design
 
@@ -69,7 +71,7 @@ If a PAC-ID is represented as QR code or data matrix code, a visual marker MUST 
 - There MUST be 1 2D code module of space (green) between the visual marker squares.
 - Each visual marker square MUST have at least one of its 25 2D-code modules set (black).
 
-![A PAC-ID.](images/visual-marker.jpg)
+![A PAC-ID.](images/visual-marker.svg)
 
 ## Recommendations
 
