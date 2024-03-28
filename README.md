@@ -24,11 +24,11 @@ A PAC-ID is composed of an `issuer` and `identifier`. It is REQUIRED that the co
 
 | **Name** | **Meaning** | **Technical Requirements** | **Example** |
 | :--- | :--- | :--- | :--- |
-| `issuer` | The party which issued the identifier and knows what the identifier refers to. | MUST be a valid domain name according to [RFC 1035](https://www.ietf.org/rfc/rfc1035.html). SHOULD be a registered and active domain name. SHOULD contain only the following characters `A-Z`, `0-9`, `-`, and `.` | "METTORIUS.COM" (The manufacturer of the balance) |
-| `identifier` | The identifier itself. | MUST consist of one or more `id segments` separated by `/`. At least one `id segment` MUST be non-empty. MUST not exceed 256 characters. | "DEVICE/21:210263" (An identifier for one particular balance) |
-| `id segment` | The `id segment` is a part of an `identifier` that can stand on its own. Typically used to organize `identifier`s within an `issuer`. | MUST be a valid `hsegment` according to [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt), but without `*`. SHOULD be limited to `A-Z`, `0-9`, and `:-+` for new designs. CAN be an `id segment key` and `id segment value` pair separated by `:`. | "21:210263" (A id segment containing a serial number) |
-| `id segment key` | The `id segment key` describes the meaning of the `id segment value`. | CAN be a [GS1 application identifier](https://www.gs1.org/standards/barcodes/application-identifiers). SHOULD be limited to `A-Z`, `0-9`, and `-+`. | 21 (GS1 identifier for Serial Number) |
-| `id segment value` | The value corresponding to the `id segment key`. | SHOULD be limited to `A-Z`, `0-9`, and `-+`. | 210263 (A Serial Number) |
+| `issuer` | The party which issued the identifier and knows what the identifier refers to. | <ul><li>MUST be a valid domain name according to [RFC 1035](https://www.ietf.org/rfc/rfc1035.html).</li><li>SHOULD be a registered and active domain name.</li><li>SHOULD contain only the following characters `A-Z`, `0-9`, `-`, and `.`</li></ul> | "METTORIUS.COM"<br>(The manufacturer of the balance) |
+| `identifier` | The identifier itself. | <ul><li>MUST consist of one or more `id segments` separated by `/`.</li><li>At least one `id segment` MUST be non-empty.</li><li>MUST not exceed 256 characters.</li></ul> | "DEVICE/21:210263"<br>(An identifier for one particular balance) |
+| `id segment` | The `id segment` is a part of an `identifier` that can stand on its own. Typically used to organize `identifier`s within an `issuer`. | <ul><li>MUST be a valid `hsegment` according to [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt), but without `*`. </li><li>SHOULD be limited to `A-Z`, `0-9`, and `:-+` for new designs.</li><li>CAN be an `id segment key` and `id segment value` pair separated by `:`.</li></ul> | "21:210263"<br>(A id segment containing a serial number) |
+| `id segment key` | The `id segment key` describes the meaning of the `id segment value`. | <ul><li>CAN be a [GS1 application identifier](https://www.gs1.org/standards/barcodes/application-identifiers).</li><li>SHOULD be limited to `A-Z`, `0-9`, and `-+`.</li></ul> | "21"<br>(GS1 identifier for Serial Number) |
+| `id segment value` | The value corresponding to the `id segment key`. | <ul><li>SHOULD be limited to `A-Z`, `0-9`, and `-+`.</li></ul> | "210263"<br>(A Serial Number) |
 
 ### Serialization
 
@@ -58,10 +58,10 @@ An example PAC-ID.
 
 ##### Placement of the Visual Marker
 
--   The visual marker MUST be placed to the left or to the bottom of the 2D-code.
+-   The visual marker MUST be placed to the right or to the bottom of the 2D-code.
 -   The spacing between visual marker and the 2D-code MUST match its minimum quiet zone (yellow area, e.g. 4 modules for QR codes, 1 module for Data Matrix codes)
 -   Visual markers placed at the bottom SHALL start from left to right. Right to Left is allowed when surrounded by RTL languages.
--   Visual markers placed at the left, SHALL start from top to bottom.
+-   Visual markers placed at the right, SHALL start from top to bottom.
 
 ![A PAC-ID.](images/pac-id-visual-marker.svg)
 
