@@ -26,9 +26,9 @@ A PAC-ID is composed of an `issuer` and `identifier`. It is REQUIRED that the co
 | :--- | :--- | :--- | :--- |
 | `issuer` | The party which issued the identifier and knows what the identifier refers to. | MUST be a valid domain name according to [RFC 1035](https://www.ietf.org/rfc/rfc1035.html). SHOULD be a registered and active domain name. SHOULD contain only the following characters `A-Z`, `0-9`, `-`, and `.` | "METTORIUS.COM" (The manufacturer of the balance) |
 | `identifier` | The identifier itself. | MUST consist of one or more `id segments` separated by `/`. At least one `id segment` MUST be non-empty. MUST not exceed 256 characters. | "DEVICE/21:210263" (An identifier for one particular balance) |
-| `id segment` | The `id segment` is a part of an `identifier` that can stand on its own. Typically used to organize `identifier`s within an `issuer`. | MUST be a valid `hsegment` according to [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt), but without `*`. SHOULD be limited to `A-Z`, `0-9`, and `:-+` for new designs. CAN be an `id segment key` and `id segment value` pair separated by `:` | "21:210263" (A id segment containing a serial number) |
-| `id segment key` | The `id segment key` describes the meaning of the `id segment value`. | CAN be a [GS1 application identifier](https://www.gs1.org/standards/barcodes/application-identifiers) SHOULD be limited to `A-Z`, `0-9`, and `-+` | 21 (GS1 identifier for Serial Number) |
-| `id segment value` | The value corresponding to the `id segment key` | SHOULD be limited to `A-Z`, `0-9`, and `-+` | 210263 (A Serial Number) |
+| `id segment` | The `id segment` is a part of an `identifier` that can stand on its own. Typically used to organize `identifier`s within an `issuer`. | MUST be a valid `hsegment` according to [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt), but without `*`. SHOULD be limited to `A-Z`, `0-9`, and `:-+` for new designs. CAN be an `id segment key` and `id segment value` pair separated by `:`. | "21:210263" (A id segment containing a serial number) |
+| `id segment key` | The `id segment key` describes the meaning of the `id segment value`. | CAN be a [GS1 application identifier](https://www.gs1.org/standards/barcodes/application-identifiers). SHOULD be limited to `A-Z`, `0-9`, and `-+`. | 21 (GS1 identifier for Serial Number) |
+| `id segment value` | The value corresponding to the `id segment key`. | SHOULD be limited to `A-Z`, `0-9`, and `-+`. | 210263 (A Serial Number) |
 
 ### Serialization
 
@@ -54,20 +54,20 @@ If a PAC-ID is represented as QR code or data matrix code, a visual marker MUST 
 
 ![A PAC-ID.](images/pac-id-example.jpg)
 
-##### Placement of the visual marker
+##### Placement of the Visual Marker
 
--   MUST be placed to the left or to the bottom of the code
--   The spacing between visual marker and barcode MUST match its minimum quiet zone (e.g. 4 modules for QR, 1 module for Data Matrix)
--   Visual Markers placed at the bottom SHALL start from left to right. Right to Left is allowed when surrounded by RTL languages.
--   Visual Markers placed at the left, SHALL start from top to bottom
+-   The visual marker MUST be placed to the left or to the bottom of the 2D-code.
+-   The spacing between visual marker and the 2D-code MUST match its minimum quiet zone (yellow area, e.g. 4 modules for QR codes, 1 module for Data Matrix codes)
+-   Visual markers placed at the bottom SHALL start from left to right. Right to Left is allowed when surrounded by RTL languages.
+-   Visual markers placed at the left, SHALL start from top to bottom.
 
 ![A PAC-ID.](images/pac-id-visual-marker.jpg)
 
-##### Visual marker design
+##### Visual Marker Design
 
-- Each Visual Marker SHALL consists of 5x5 module size visual marker squares
-- There MUST be 1 module space between the visual marker squares
-- Each visual marker square MUST have at least one of its 25 modules set
+- Each visual marker SHALL consist of marker squares (blue), which consist of 5x5 2D-code modules each.
+- There MUST be 1 2D code module of space (green) between the visual marker squares.
+- Each visual marker square MUST have at least one of its 25 2D-code modules set (black).
 
 ![A PAC-ID.](images/visual-marker.jpg)
 
