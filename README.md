@@ -46,13 +46,48 @@ All other URI components MUST be empty.
 
 ### Transmission
 
+PAC-ID’s MAY be transmitted by any means adequate for the corresponding serialization format (e.g. QR-Code, NDEF, iBeacon, etc for URL).
+
 #### Visual Markers
+
+If a PAC-ID is represented as QR code or data matrix code, a visual marker MUST be added.
+
+![A PAC-ID.](images/pac-id-example.jpg)
+
+##### Placement of the visual marker
+
+-   MUST be placed to the left or to the bottom of the code
+-   The spacing between visual marker and barcode MUST match its minimum quiet zone (e.g. 4 modules for QR, 1 module for Data Matrix)
+-   Visual Markers placed at the bottom SHALL start from left to right. Right to Left is allowed when surrounded by RTL languages.
+-   Visual Markers placed at the left, SHALL start from top to bottom
+
+![A PAC-ID.](images/pac-id-visual-marker.jpg)
+
+##### Visual marker design
+
+- Each Visual Marker SHALL consists of 5x5 module size visual marker squares
+- There MUST be 1 module space between the visual marker squares
+- Each visual marker square MUST have at least one of its 25 modules set
+
+![A PAC-ID.](images/visual-marker.jpg)
 
 ## Recommendations
 
 ### Identifier Encodings
 
+If designing new systems, consider using Base36 encoded identifiers for maximizing efficiency when embedded in a QR Code or DataMatrix.
+
+For legacy systems it is recommended to use identifiers as is (with URL-encoding for characters that don’t comply with the character space valid for `id segments`.
+
 ### Design Considerations for ID Segments
+
+Using multiple `id segment`s might seem unnecessary overhead at first. Adding a few additional `id segments`, however considerably increases the usefulness of `PAC-ID`s in conjunction with other Smart Building Blocks, especially the `PAC-ID Resolver` (The `PAC-ID Resolver` is able to provide user-handovers/routing to systems that provide information about the corresponding ID. See [PAC-ID Resolver on GitHub](https://github.com/ApiniLabs/pac-id-resolver) for more info.
+
+-   Add additional `id segment`s containing information that allows lookup in pre-existing systems (e.g. for a device, its serial number might be the only necessary `id segment` needed for a uniqueness perspective. However, adding the article/product/model number in addition likely allows routing to considerably more content that is relevant for this device)
+
+-   Add `id segment`s that partition by resource type or domain. (e.g. a CDS can only provide more information about Chromatography runs, but not MS runs)
+
+-   Using key/value syntax with standardized keys enables `PAC-ID` routing in generic contexts.
 
 ## Terminology Used
 
