@@ -6,13 +6,13 @@ Laboratory software needs to unambiguously refer to real world objects and data.
 
 ![The Balance is known under multiple identifiers as each system issues its own.](images/balance-multiple.png)
 
-The Balance is known under **multiple** identifiers as each system issues its own.
+_The Balance is known under **multiple** identifiers as each system issues its own._
 
 As part of the Smart Building Blocks for Digital Labs initiative, the **publicly addressable content identifier ("PAC-ID")** addresses this by promoting the re-use of already existing identifiers. The identifier is augmented with information about the issuing system and is represented in standardized formats, thus making it globally unique and reusable across system borders.
 
 ![All systems are using the the same globally unique identifier for referring to the balance.](images/balance-same.png)
 
-All systems are using the the **same** globally unique identifier for referring to the balance.
+_All systems are using the the **same** globally unique identifier for referring to the balance._
 
 The `PAC-ID` also serves as foundation for further Smart Building Blocks that provide functionality that wouldn’t be feasible with proprietary identifiers.
 
@@ -20,7 +20,7 @@ The `PAC-ID` also serves as foundation for further Smart Building Blocks that pr
 
 ### Components
 
-A PAC-ID is composed of an `issuer` and `identifier`. It is REQUIRED that the combination of `issuer` and `identifier` is globally unique.
+A PAC-ID is composed of an `issuer` and `identifier` component. It is REQUIRED that the combination of `issuer` and `identifier` is globally unique.
 
 | **Name** | **Meaning** | **Technical Requirements** | **Example** |
 | :--- | :--- | :--- | :--- |
@@ -34,15 +34,21 @@ A PAC-ID is composed of an `issuer` and `identifier`. It is REQUIRED that the co
 
 #### URL Format
 
-| **URI Component\*** | **Value** |
+A PAC-ID can be represented as a text in the form of an URL as follows:
+
+| **URI Component[^1]** | **Value** |
 | :--- | :--- |
 | `scheme` | Always `"HTTPS"`. |
 | `host` | The `issuer` of the `PAC-ID`, prefixed by `"PAC."`. |
 | `path` | The `identifier` of the `PAC-ID`, potentially followed by `*` and arbitrary content. `*` and subsequent characters are not part of the `PAC-ID` and MUST be ignored (extension space). |
 
-\* according to [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986#appendix-A)
+[^1]: according to [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986#appendix-A). All other URI components MUST be empty.
 
-All other URI components MUST be empty.
+> [!NOTE]
+> An example PAC-ID, represented as URL:
+> ```
+> HTTPS://PAC.METTORIUS.COM/DEVICE/21:210263
+> ```
 
 ### Transmission
 
@@ -54,7 +60,7 @@ If a PAC-ID is represented as QR code or data matrix code, a visual marker MUST 
 
 ![A PAC-ID.](images/pac-id-example.svg)
 
-An example PAC-ID.
+_The example PAC-ID `HTTPS://PAC.METTORIUS.COM/DEVICE/21:210263` represented as QR code._
 
 ##### Placement of the Visual Marker
 
@@ -65,6 +71,8 @@ An example PAC-ID.
 
 ![A PAC-ID.](images/pac-id-visual-marker.svg)
 
+_Placement of the Visual Marker_
+
 ##### Visual Marker Design
 
 - Each visual marker SHALL consist of marker squares (blue), which consist of 5x5 2D-code modules each.
@@ -72,6 +80,8 @@ An example PAC-ID.
 - Each visual marker square MUST have at least one of its 25 2D-code modules set (black).
 
 ![A PAC-ID.](images/visual-marker.svg)
+
+_Visual Marker Design_
 
 ## Recommendations
 
