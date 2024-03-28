@@ -1,4 +1,81 @@
-# PAC-ID (Draft)
+# PAC-ID
+
+## Introduction
+
+Laboratory software needs to unambiguously refer to real world objects and data. Typically, this is achieved by assigning unique identifiers to objects and data sets. As of today, each software product creates its own proprietary identifiers. With an increasing number of software products deployed in labs, objects usually end up having multiple identifiers. This impacts usability, causes errors and increases maintenance efforts.
+
+![The Balance is known under multiple identifiers as each system issues its own.](images/balance-multiple.png)
+
+The Balance is known under **multiple** identifiers as each system issues its own.
+
+As part of the Smart Building Blocks for Digital Labs initiative, the **publicly addressable content identifier ("PAC-ID")** addresses this by promoting the re-use of already existing identifiers. The identifier is augmented with information about the issuing system and is represented in standardized formats, thus making it globally unique and reusable across system borders.
+
+![All systems are using the the same globally unique identifier for referring to the balance.](images/balance-same.png)
+
+All systems are using the the **same** globally unique identifier for referring to the balance.
+
+The `PAC-ID` also serves as foundation for further Smart Building Blocks that provide functionality that wouldn’t be feasible with proprietary identifiers.
+
+## Specification
+
+### Components
+
+A PAC-ID MUST be composed of an `issuer` and `identifier`. It is REQUIRED that the combination of `issuer` and `identifier` is globally unique.
+
+| **Name** | **Meaning** | **Technical Requirements** | **Example** |
+| :--- | :--- | :--- | :--- |
+| `issuer` | The party which issued the identifier and knows what the identifier refers to. | MUST be a valid domain name according to [RFC 1035](https://www.ietf.org/rfc/rfc1035.html). SHOULD be a registered and active domain name. SHOULD contain only the following characters `A-Z`, `0-9`, `-`, and `.` | "METTORIUS.COM" (The manufacturer of the balance) |
+
+
+### Serialization
+
+#### URL Format
+
+### Transmission
+
+#### Visual Markers
+
+## Recommendations
+
+### Identifier Encodings
+
+### Design Considerations for ID Segments
+
+## Terminology Used
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt) "Key words for use in RFCs to Indicate Requirement Levels".
+
+## FAQ
+
+
+
+## License
+
+Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
+
+This work is licensed under a
+[Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
+
+[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
+
+[cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
+[cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
+[cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Introduction
 
