@@ -20,7 +20,7 @@ The `PAC-ID` also serves as foundation for further Smart Building Blocks that pr
 
 ### Components
 
-A PAC-ID MUST be composed of an `issuer` and `identifier`. It is REQUIRED that the combination of `issuer` and `identifier` is globally unique.
+A PAC-ID is composed of an `issuer` and `identifier`. It is REQUIRED that the combination of `issuer` and `identifier` is globally unique.
 
 | **Name** | **Meaning** | **Technical Requirements** | **Example** |
 | :--- | :--- | :--- | :--- |
@@ -33,6 +33,16 @@ A PAC-ID MUST be composed of an `issuer` and `identifier`. It is REQUIRED that t
 ### Serialization
 
 #### URL Format
+
+| **URI Component\*** | **Value** |
+| :--- | :--- |
+| `scheme` | Always `"HTTPS"`. |
+| `host` | The `issuer` of the `PAC-ID`, prefixed by `"PAC."`. |
+| `path` | The `identifier` of the `PAC-ID`, potentially followed by `*` and arbitrary content. `*` and subsequent characters are not part of the `PAC-ID` and MUST be ignored (extension space). |
+
+\* according to [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986#appendix-A)
+
+All other URI components MUST be empty.
 
 ### Transmission
 
