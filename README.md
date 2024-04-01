@@ -103,7 +103,7 @@ Using multiple `id segment`s might seem unnecessary overhead at first. Adding a 
 
 ## PAC-ID Extension
 
-`PAC-ID`s can be extended with custom information after a`*` character. As stated above, the `*` character and subsequent characters are not part of the `PAC-ID` and can therefore be used for custom extensions. 
+`PAC-ID`s can be extended with custom information after a `*` character. As stated above, the `*` character and subsequent characters are not part of the `PAC-ID` and can therefore be used for custom extensions. 
 
 A well-known extension is the [T-REX](https://github.com/ApiniLabs/T-REX).
 
