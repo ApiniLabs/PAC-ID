@@ -3,11 +3,13 @@
 ## What Is a `PAC-ID`?
 
 > [!TIP]
-> A `PAC-ID` (or **P**ublicly **A**ddressable **C**ontent **ID**entifier) is a globally unique identifier that does not require a central registry. It can be used to reference substances, devices, consumables or measurement results and **looks like an URL**:
+> A `PAC-ID`, which stands for **P**ublicly **A**ddressable **C**ontent **ID**entifier, is a globally unique identifier that operates independently of a central registry. It resembles a URL and serves to reference substances, devices, consumables, or measurement results.
+>
+> Here is an example `PAC-ID`:
 > ```
 > HTTPS://PAC.METTORIUS.COM/DEVICE/21:210263
 > ```
-> The same `PAC-ID` can also be represented in other formats, such as a QR code:
+> The `PAC-ID` can also be represented in alternative formats, including as a QR code:
 > 
 > ![A PAC-ID.](images/pac-id-example.svg)
 
