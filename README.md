@@ -63,7 +63,7 @@ A PAC-ID can be represented as a text in the form of an URL as follows:
 
 ### Transmission
 
-PAC-ID’s MAY be transmitted by any means adequate for the corresponding serialization format (e.g. QR-Code, NDEF, iBeacon, etc for URL).
+PAC-ID’s MAY be transmitted by any means adequate for the  serialization format (URL Format) of `PAC-ID`s (e.g. QR code, NDEF, iBeacon, etc.).
 
 #### Visual Markers
 
@@ -98,7 +98,9 @@ _Visual Marker Design_
 
 ### Identifier Encodings
 
-If designing new systems, consider using Base36 encoded identifiers for maximizing efficiency when embedded in a QR Code or DataMatrix.
+If designing new systems based on existing identifiers, consider using Base36 encoded `PAC-ID` `identifier`s for maximizing efficiency when embedded in a QR Code or DataMatrix codes.[^2]
+
+[^2]: When using [Base36](https://en.wikipedia.org/wiki/Base36) encoding, the character set required is limited to `0–9`, `A–Z` (upper-case only), which allows efficient encoding that for example only consumes 5 1⁄2 bits/character in a QR code.
 
 For legacy systems it is recommended to use identifiers as is (with URL-encoding for characters that don’t comply with the character space valid for `id segments`.
 
