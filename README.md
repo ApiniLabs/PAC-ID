@@ -47,7 +47,7 @@ A PAC-ID is composed of an `issuer` and `identifier` component. It is REQUIRED t
 
 #### URL Format
 
-A PAC-ID can be represented as a text in the form of an URL as follows:
+A `PAC-ID` can be represented as a text in the form of a URL as follows:
 
 | **URI Component[^1]** | **Value** |
 | :--- | :--- |
@@ -63,9 +63,11 @@ A PAC-ID can be represented as a text in the form of an URL as follows:
 > HTTPS://PAC.METTORIUS.COM/DEVICE/21:210263
 > ```
 
+It is RECOMMENDED that the URL locates a human readable web page which at least discloses information about the `issuer`. The URL MAY also point to a default [`PAC-ID Resolver`](https://github.com/ApiniLabs/PAC-ID-Resolver) that is implemented as a web application on that URL.
+
 ### Transmission
 
-PAC-ID’s MAY be transmitted by any means adequate for the  serialization format (URL Format) of `PAC-ID`s (e.g. QR code, NDEF, iBeacon, etc.).
+PAC-ID’s MAY be transmitted by any means adequate for the serialization format (URL Format) of `PAC-ID`s (e.g. QR code, NDEF, iBeacon, etc.).
 
 #### Visual Markers
 
