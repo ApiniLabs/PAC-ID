@@ -91,15 +91,15 @@ If designing new systems, consider using Base36 encoded identifiers for maximizi
 
 For legacy systems it is recommended to use identifiers as is (with URL-encoding for characters that don’t comply with the character space valid for `id segments`.
 
-### Design Considerations for ID Segments
+### Design Considerations for `id segment`s
 
-Using multiple `id segment`s might seem unnecessary overhead at first. Adding a few additional `id segments`, however considerably increases the usefulness of `PAC-ID`s in conjunction with other Smart Building Blocks, especially the `PAC-ID Resolver` (The `PAC-ID Resolver` is able to provide user-handovers/routing to systems that provide information about the corresponding ID. See [PAC-ID Resolver on GitHub](https://github.com/ApiniLabs/pac-id-resolver) for more info.
+Using multiple `id segment`s might seem unnecessary overhead at first. Adding a few additional `id segment`s, however considerably increases the usefulness of `PAC-ID`s in conjunction with other Smart Building Blocks, especially the `PAC-ID Resolver` (The `PAC-ID Resolver` is able to provide user-handovers/routing to systems that provide information about the corresponding `PAC-ID`. See [PAC-ID Resolver on GitHub](https://github.com/ApiniLabs/pac-id-resolver) for more info.
 
--   Add additional `id segment`s containing information that allows lookup in pre-existing systems (e.g. for a device, its serial number might be the only necessary `id segment` needed for a uniqueness perspective. However, adding the article/product/model number in addition likely allows routing to considerably more content that is relevant for this device)
+- Add additional `id segment`s containing information that allows lookup in pre-existing systems (e.g. for a device, its serial number might be the only necessary `id segment` needed for a uniqueness perspective. However, adding the article/product/model number in addition likely allows routing to considerably more content that is relevant for this device)
 
--   Add `id segment`s that partition by resource type or domain. (e.g. a CDS can only provide more information about Chromatography runs, but not MS runs)
+- Add `id segment`s that partition by resource type or domain. (e.g. a CDS can only provide more information about Chromatography runs, but not MS runs)
 
--   Using key/value syntax with standardized keys enables `PAC-ID` routing in generic contexts.
+- Using the key/value syntax (`id segment key` `:` `id segment value`) with well-known keys enables `PAC-ID` routing in generic contexts.
 
 ## Terminology Used
 
