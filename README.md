@@ -1,5 +1,16 @@
 # PAC-ID
 
+## What Is a `PAC-ID`?
+
+> [!TIP]
+> A `PAC-ID` (or **P**ublicly **A**ddressable **C**ontent **ID**entifier) is a globally unique identifier that does not require a central registry. It can be used to reference substances, devices, consumables or measurement results and **looks like an URL**:
+> ```
+> HTTPS://PAC.METTORIUS.COM/DEVICE/21:210263
+> ```
+> The same `PAC-ID` can also be represented in other formats, such as a QR code:
+> 
+> ![A PAC-ID.](images/pac-id-example.svg)
+
 ## Introduction
 
 Laboratory software needs to unambiguously refer to real world objects and data. Typically, this is achieved by assigning unique identifiers to objects and data sets. As of today, each software product creates its own proprietary identifiers. With an increasing number of software products deployed in labs, objects usually end up having multiple identifiers. This impacts usability, causes errors and increases maintenance efforts.
