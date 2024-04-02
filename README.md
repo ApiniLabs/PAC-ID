@@ -23,7 +23,7 @@ _The Balance is known under **multiple** identifiers as each system issues its o
 
 As part of the Smart Building Blocks for Digital Labs initiative, the **publicly addressable content identifier ("PAC-ID")** addresses this by promoting the re-use of already existing identifiers. The identifier is augmented with information about the issuing system and is represented in standardized formats, thus making it globally unique and reusable across system borders.
 
-![All systems are using the the same globally unique identifier for referring to the balance.](images/balance-same.png)
+![All systems are using the the same globally unique identifier for referring to the balance.](images/balance-same.svg)
 
 _All systems are using the the **same** globally unique identifier for referring to the balance._
 
