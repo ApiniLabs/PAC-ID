@@ -23,9 +23,9 @@ _The Balance is known under **multiple** identifiers as each system issues its o
 
 As part of the Smart Building Blocks for Digital Labs initiative, the **publicly addressable content identifier ("PAC-ID")** addresses this by promoting the re-use of already existing identifiers. The identifier is augmented with information about the issuing system and is represented in standardized formats, thus making it globally unique and reusable across system borders.
 
-![All systems are using the the same globally unique identifier for referring to the balance.](images/balance-same.svg)
+![All systems are using the same globally unique identifier for referring to the balance.](images/balance-same.svg)
 
-_All systems are using the the **same** globally unique identifier for referring to the balance._
+_All systems are using the **same** globally unique identifier for referring to the balance._
 
 The `PAC-ID` also serves as foundation for further Smart Building Blocks that provide functionality that wouldn’t be feasible with proprietary identifiers.
 
@@ -91,7 +91,7 @@ _Placement of the Visual Marker_
 ##### Visual Marker Design
 
 - Each visual marker SHALL consist of marker squares (blue), which consist of 5x5 2D-code modules each.
-- There MUST be 1 2D code module of space (green) between the visual marker squares.
+- There MUST be one 2D code module of space (green) between the visual marker squares.
 - Each visual marker square MUST have at least one of its 25 2D-code modules set (black).
 
 ![A PAC-ID.](images/visual-marker.svg)
@@ -110,7 +110,7 @@ For legacy systems it is recommended to use identifiers as is (with URL-encoding
 
 ### Design Considerations for `id segment`s
 
-Using multiple `id segment`s might seem unnecessary overhead at first. Adding a few additional `id segment`s, however considerably increases the usefulness of `PAC-ID`s in conjunction with other Smart Building Blocks, especially the `PAC-ID Resolver` (The `PAC-ID Resolver` is able to provide user-handovers/routing to systems that provide information about the corresponding `PAC-ID`. See [PAC-ID Resolver on GitHub](https://github.com/ApiniLabs/pac-id-resolver) for more info.
+Using multiple `id segment`s might seem like unnecessary overhead at first. Adding a few additional `id segment`s, however considerably increases the usefulness of `PAC-ID`s. In conjunction with other Smart Building Blocks, especially the `PAC-ID Resolver`. The `PAC-ID Resolver` is able to provide user-handovers/routing to systems that provide information about the corresponding `PAC-ID`. See [PAC-ID Resolver on GitHub](https://github.com/ApiniLabs/pac-id-resolver) for more info.
 
 - Add additional `id segment`s containing information that allows lookup in pre-existing systems (e.g. for a device, its serial number might be the only necessary `id segment` needed for a uniqueness perspective. However, adding the article/product/model number in addition likely allows routing to considerably more content that is relevant for this device)
 
