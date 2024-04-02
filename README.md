@@ -17,7 +17,7 @@
 
 Laboratory software needs to unambiguously refer to real world objects and data. Typically, this is achieved by assigning unique identifiers to objects and data sets. As of today, each software product creates its own proprietary identifiers. With an increasing number of software products deployed in labs, objects usually end up having multiple identifiers. This impacts usability, causes errors and increases maintenance efforts.
 
-![The Balance is known under multiple identifiers as each system issues its own.](images/balance-multiple.png)
+![The Balance is known under multiple identifiers as each system issues its own.](images/balance-multiple.svg)
 
 _The Balance is known under **multiple** identifiers as each system issues its own._
 
