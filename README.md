@@ -56,11 +56,10 @@ A `PAC-ID` can be represented as a text in the form of a URL as follows:
 
 [^1]: according to [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986#appendix-A). All other URI components MUST be empty.
 
-> [!NOTE]
-> An example PAC-ID, represented as URL:
-> ```
-> HTTPS://PAC.METTORIUS.COM/DEVICE/21:210263
-> ```
+An example PAC-ID, represented as URL:
+```
+HTTPS://PAC.METTORIUS.COM/DEVICE/21:210263
+```
 
 It is RECOMMENDED that the URL locates a human readable web page which at least discloses information about the `issuer`. The URL MAY also point to a default [`PAC-ID Resolver`](https://github.com/ApiniLabs/PAC-ID-Resolver) that is implemented as a web application on that URL.
 
