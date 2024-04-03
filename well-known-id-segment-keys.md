@@ -6,7 +6,7 @@ The following approach SHALL be used to define an `id segment key`:
 
 1. Use a preexisting [GS1 Application Identifier](https://ref.gs1.org/ai/). Some commonly used GS1 AIs are referenced in the table below.
 2. Use a predefined key from the table below (with origin `PAC-ID-COMMONS`).
-3. Use a self-defined key. It is RECOMMENDED to base such a key on a well-known existing ontology. New keys MAY be added to the table below through a merge request.
+3. Use a self-defined key. It is RECOMMENDED to base such a key on a well-known existing ontology. New keys MAY be added to the table below through a pull request.
 
 | **Key (`id segment key`)** | **Ontology Origin** | **Meaning / Comment** |
 | :--- | :--- | :--- |
