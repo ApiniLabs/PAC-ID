@@ -16,6 +16,9 @@ The following approach SHALL be used to define an `id segment key`:
 | `240` | GS1 AI[^1] | Additional product identification assigned by the manufacturer. For all articles without GTIN; otherwise use `id segment key` `01` instead. |
 | `RNA` | PAC-ID-COMMONS | An absolute run id (i.e. unique in itself without further information) |
 | `RNR` | PAC-ID-COMMONS | A relative run id (i.e. only unique together with other information, e.g. a device identifier) |
+| `SMP` | PAC-ID-COMMONS | A sample id |
+| `EXP` | PAC-ID-COMMONS | An experiment id |
+| `RST` | PAC-ID-COMMONS | A result id (i.e. an id pointing to result data) |
 | `MTD` | PAC-ID-COMMONS | A method id; e.g. a reference to an SOP (standard operating procedure) |
 | `RPT` | PAC-ID-COMMONS | A report id; e.g. a reference to a result report |
 | `V` |  PAC-ID-COMMONS | A version or revision number. It is RECOMMENDED to use version numbers that follows the [semantic versioning](https://semver.org/) guidelines. |
