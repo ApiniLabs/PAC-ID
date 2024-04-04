@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="160.69476mm"
+   height="84.771843mm"
+   viewBox="0 0 160.69476 84.771843"
+   version="1.1"
+   id="svg797"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs794" />
+  <g
+     id="layer1"
+     transform="translate(-32.421745,-152.1718)">
+    <rect
+       style="fill:#ffffff;stroke-width:0.263707"
+       id="rect2913"
+       width="160.69501"
+       height="84.771843"
+       x="32.421745"
+       y="152.1718" />
+    <g
+       id="g807"
+       transform="matrix(0.26458333,0,0,0.26458333,-139.72708,98.51397)">
+      <g
+         id="g805">
+        <g
+           id="g803">
+          <path
+             d="m 1016.75,334.469 v 60.062 h 77.5 v -60.062 z m 66.84,5.812 c 1.07,0 1.94,0.868 1.94,1.938 0,1.07 -0.87,1.937 -1.94,1.937 -1.07,0 -1.93,-0.867 -1.93,-1.937 0,-1.07 0.86,-1.938 1.93,-1.938 z m -6.78,0 c 1.07,0 1.94,0.868 1.94,1.938 0,1.07 -0.87,1.937 -1.94,1.937 -1.07,0 -1.93,-0.867 -1.93,-1.937 0,-1.07 0.86,-1.938 1.93,-1.938 z m -6.78,0 c 1.07,0 1.94,0.868 1.94,1.938 0,1.07 -0.87,1.937 -1.94,1.937 -1.07,0 -1.94,-0.867 -1.94,-1.937 0,-1.07 0.87,-1.938 1.94,-1.938 z m 18.41,48.438 h -65.88 v -38.75 h 65.88 z"
+             id="path801" />
+        </g>
+      </g>
+    </g>
+    <g
+       id="g815"
+       transform="matrix(0.26458333,0,0,0.26458333,-139.72708,98.51397)">
+      <g
+         id="g813">
+        <g
+           id="g811">
+          <path
+             d="m 7.75,16.4688 v 60.0624 h 77.5 V 16.4688 Z m 66.8438,5.8124 c 1.07,0 1.9374,0.8675 1.9374,1.9376 0,1.07 -0.8674,1.9374 -1.9374,1.9374 -1.0701,0 -1.9376,-0.8674 -1.9376,-1.9374 0,-1.0701 0.8675,-1.9376 1.9376,-1.9376 z m -6.7813,0 c 1.0701,0 1.9375,0.8675 1.9375,1.9376 0,1.07 -0.8674,1.9374 -1.9375,1.9374 -1.0701,0 -1.9375,-0.8674 -1.9375,-1.9374 0,-1.0701 0.8674,-1.9376 1.9375,-1.9376 z m -6.7813,0 c 1.0701,0 1.9376,0.8675 1.9376,1.9376 0,1.07 -0.8675,1.9374 -1.9376,1.9374 -1.07,0 -1.9374,-0.8674 -1.9374,-1.9374 0,-1.0701 0.8674,-1.9376 1.9374,-1.9376 z m 18.4063,48.4376 h -65.875 v -38.75 h 65.875 z"
+             transform="matrix(1,0,0,1.01075,1009,241)"
+             id="path809" />
+        </g>
+      </g>
+    </g>
+    <text
+       font-family="'Bahnschrift Light SemiCondensed', 'Bahnschrift Light SemiCondensed_MSFontService', sans-serif"
+       font-weight="300"
+       font-stretch="semi-condensed"
+       font-size="6.35px"
+       id="text817"
+       x="154.44725"
+       y="173.39105"
+       style="stroke-width:0.264583">Calibration</text>
+    <text
+       font-family="'Bahnschrift Light SemiCondensed', 'Bahnschrift Light SemiCondensed_MSFontService', sans-serif"
+       font-weight="300"
+       font-stretch="semi-condensed"
+       font-size="6.35px"
+       id="text819"
+       x="154.44725"
+       y="181.06396"
+       style="stroke-width:0.264583">Software</text>
+    <text
+       font-family="'Bahnschrift Light SemiCondensed', 'Bahnschrift Light SemiCondensed_MSFontService', sans-serif"
+       font-weight="300"
+       font-stretch="semi-condensed"
+       font-size="6.35px"
+       id="text821"
+       x="154.76476"
+       y="197.20355"
+       style="stroke-width:0.264583">ERP</text>
+    <g
+       id="g829"
+       transform="matrix(0.26458333,0,0,0.26458333,-139.72708,98.51397)">
+      <g
+         id="g827">
+        <g
+           id="g825">
+          <path
+             d="M 708.942,472.854 H 833.178 V 433.686 H 708.942 Z m 15.606,-23.256 h 93.024 v 7.65 H 724.548 Z M 848.784,416.856 V 230.502 H 778.71 v -8.262 h -15.3 v 8.262 h -70.074 v 186.354 l -23.256,46.818 v 33.354 h 23.256 v 6.732 h 23.256 v -6.732 h 108.936 v 6.732 h 23.256 v -6.732 H 872.04 V 463.674 Z M 708.942,246.414 H 833.178 V 410.736 H 815.43 l -7.65,-23.868 h -73.44 l -7.65,23.868 h -17.748 z m 90.27,164.322 h -56.304 l 2.754,-8.262 h 50.796 z m 57.222,70.686 H 685.686 v -14.076 l 20.196,-41.004 h 130.356 l 20.196,41.004 z"
+             stroke="#ffffff"
+             stroke-width="1.08225"
+             id="path823" />
+        </g>
+      </g>
+    </g>
+    <path
+       d="m 48.656251,171.40668 c 0,-2.8493 2.310077,-5.15938 5.159375,-5.15938 h 20.6375 c 2.849298,0 5.159375,2.31008 5.159375,5.15938 v 23.01875 c 0,2.8493 -2.310077,5.15937 -5.159375,5.15937 h -20.6375 c -2.849298,0 -5.159375,-2.31007 -5.159375,-5.15937 z"
+       fill="#e2b13c"
+       fill-rule="evenodd"
+       id="path831"
+       style="stroke-width:0.264583" />
+    <text
+       font-family="'Bahnschrift SemiBold SemiCondensed', 'Bahnschrift SemiBold SemiCondensed_MSFontService', sans-serif"
+       font-weight="600"
+       font-stretch="semi-condensed"
+       font-size="2.91042px"
+       id="text833"
+       x="50.893833"
+       y="174.71397"
+       style="stroke-width:0.264583">Identifier</text>
+    <text
+       fill="#375c90"
+       font-family="'Bahnschrift Light SemiCondensed', 'Bahnschrift Light SemiCondensed_MSFontService', sans-serif"
+       font-weight="300"
+       font-stretch="semi-condensed"
+       font-size="4.23333px"
+       id="text835"
+       x="50.500927"
+       y="180.00565"
+       style="stroke-width:0.264583">21:210263</text>
+    <text
+       font-family="'Bahnschrift SemiBold SemiCondensed', 'Bahnschrift SemiBold SemiCondensed_MSFontService', sans-serif"
+       font-weight="600"
+       font-stretch="semi-condensed"
+       font-size="2.91042px"
+       id="text837"
+       x="50.633217"
+       y="186.8848"
+       style="stroke-width:0.264583">Issuer</text>
+    <text
+       font-family="'Bahnschrift Light SemiCondensed', 'Bahnschrift Light SemiCondensed_MSFontService', sans-serif"
+       font-weight="300"
+       font-stretch="semi-condensed"
+       font-size="3.14236px"
+       id="text839"
+       x="50.777859"
+       y="191.10219"
+       style="stroke-width:0.196397">METTORIUS.COM</text>
+    <text
+       font-family="'Bahnschrift SemiBold SemiCondensed', 'Bahnschrift SemiBold SemiCondensed_MSFontService', sans-serif"
+       font-weight="600"
+       font-stretch="semi-condensed"
+       font-size="6.35px"
+       id="text841"
+       x="136.15131"
+       y="208.58064"
+       style="stroke-width:0.264583">. . .</text>
+    <path
+       d="m 109.36357,175.7723 -7.79076,9.56254"
+       stroke="#379890"
+       stroke-width="2.11667"
+       stroke-linecap="round"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path843" />
+    <path
+       d="m 95.4875,185.56189 h 6.12219"
+       stroke="#379890"
+       stroke-width="2.11667"
+       stroke-linecap="round"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path845" />
+    <path
+       d="m 109.24583,175.7723 h 6.1222"
+       stroke="#379890"
+       stroke-width="2.11667"
+       stroke-linecap="round"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path847" />
+    <path
+       d="m 109.24583,195.35147 h 6.1222"
+       stroke="#379890"
+       stroke-width="2.11667"
+       stroke-linecap="round"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path849" />
+    <path
+       d="m 109.31251,195.39909 -7.47501,-9.8372"
+       stroke="#379890"
+       stroke-width="2.11667"
+       stroke-linecap="round"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path851" />
+  </g>
+</svg>
