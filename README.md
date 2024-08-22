@@ -6,7 +6,7 @@ A `PAC-ID`, which stands for **P**ublicly **A**ddressable **C**ontent **ID**enti
 
 Here is an example `PAC-ID`:
 ```
-HTTPS://PAC.METTORIUS.COM/DEVICE/21:210263
+HTTPS://PAC.METTORIUS.COM/-MD/21:210263
 ```
 The `PAC-ID` can also be represented in alternative formats, including as a QR code:
 
@@ -37,8 +37,8 @@ A PAC-ID is composed of an `issuer` and `identifier` component. It is REQUIRED t
 | **Name** | **Meaning** | **Technical Requirements** | **Example** |
 | :--- | :--- | :--- | :--- |
 | `issuer` | The party which issued the identifier and knows what the identifier refers to. | <ul><li>MUST be a valid domain name according to [RFC 1035](https://www.ietf.org/rfc/rfc1035.html).</li><li>SHOULD be a registered and active domain name.</li><li>SHOULD contain only the following characters `A-Z`, `0-9`, `-`, and `.`</li></ul> | "METTORIUS.COM"<br>(The manufacturer of the balance) |
-| `identifier` | The identifier itself. | <ul><li>MUST consist of one or more `id segments` separated by `/`.</li><li>At least one `id segment` MUST be non-empty.</li><li>MUST not exceed 256 characters.</li></ul> | "DEVICE/21:210263"<br>(An identifier for one particular balance) |
-| `id segment` | The `id segment` is a part of an `identifier` that can stand on its own. Typically used to organize `identifier`s within an `issuer`. | <ul><li>MUST be a valid `hsegment` according to [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt), but without `*` (see [PAC-ID Extension](#pac-id-extension)). </li><li>SHOULD be limited to `A-Z`, `0-9`, and `:-+` for new designs.</li><li>CAN be an `id segment key` and `id segment value` pair separated by `:`.</li></ul> | "21:210263"<br>(A id segment containing a serial number) |
+| `identifier` | The identifier itself. | <ul><li>MUST consist of one or more `id segments` separated by `/`.</li><li>At least one `id segment` MUST be non-empty.</li><li>MUST not exceed 256 characters.</li> <li> SHOULD be further structured according to these [recommendations](/well-known-id-segment-groups.md) .</ul>| "-MD/21:210263"<br>(An identifier for one particular balance) |
+| `id segment` | The `id segment` is a part of an `identifier` that can stand on its own. Typically used to organize `identifier`s within an `issuer`. | <ul><li>MUST be a valid `hsegment` according to [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt), but without `*` (see [PAC-ID Extension](#pac-id-extension)). </li><li>SHOULD be limited to `A-Z`, `0-9`, and `:-+` for new designs.</li><li>CAN be an `id segment key` and `id segment value` pair separated by `:`.</li></ul> | "21:210263"<br>(An id segment containing a serial number) |
 | `id segment key` | The `id segment key` describes the meaning of the `id segment value`. | <ul><li>RECOMMENDED to be a [well-known `id segment key`](well-known-id-segment-keys.md).</li><li>SHOULD be limited to `A-Z`, `0-9`, and `-+`.</li></ul> | "21"<br>(GS1 identifier for Serial Number) |
 | `id segment value` | The value corresponding to the `id segment key`. | <ul><li>SHOULD be limited to `A-Z`, `0-9`, and `-+`.</li></ul> | "210263"<br>(A Serial Number) |
 
@@ -58,7 +58,7 @@ A `PAC-ID` can be represented as a text in the form of a URL as follows:
 
 An example PAC-ID, represented as URL:
 ```
-HTTPS://PAC.METTORIUS.COM/DEVICE/21:210263
+HTTPS://PAC.METTORIUS.COM/-MD/21:210263
 ```
 
 It is RECOMMENDED that the URL locates a human readable web page which at least discloses information about the `issuer`. The URL MAY also point to a default [`PAC-ID Resolver`](https://github.com/ApiniLabs/PAC-ID-Resolver) that is implemented as a web application on that URL.
@@ -73,7 +73,7 @@ If a PAC-ID is represented as QR code or data matrix code, a visual marker MUST 
 
 ![A PAC-ID.](images/pac-id-example.svg)
 
-_The example PAC-ID `HTTPS://PAC.METTORIUS.COM/DEVICE/21:210263` represented as QR code._
+_The example PAC-ID `HTTPS://PAC.METTORIUS.COM/-MD/21:210263` represented as QR code._
 
 ##### Placement of the Visual Marker
 
@@ -115,6 +115,8 @@ Using multiple `id segment`s might seem like unnecessary overhead at first. Addi
 - Add `id segment`s that partition by resource type or domain. (e.g. a CDS can only provide more information about Chromatography runs, but not MS runs)
 
 - Using the key/value syntax (`id segment key` `:` `id segment value`) with [well-known `id segment keys`](well-known-id-segment-keys.md) enables `PAC-ID` routing in generic contexts.
+
+See [recommendations](/recommendation-for-identifier-structure.md) for best practices on structuring the identifier.
 
 ## PAC-ID Extension
 
