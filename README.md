@@ -69,7 +69,7 @@ It is RECOMMENDED that the URL locates a human readable web page which at least 
 
 #### Visual Markers
 
-If a PAC-ID is represented as QR code or data matrix code, a visual marker MUST be added.
+If a `PAC-ID` is represented as QR code or data matrix code, a visual marker MUST be added.
 
 ![A PAC-ID.](images/pac-id-example.svg)
 
