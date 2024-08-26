@@ -122,7 +122,7 @@ Using multiple `id segment`s might seem like unnecessary overhead at first. Addi
 | :--- | :--- | :--- | 
 | `name` | Name of the extension | SHOULD indicate the purpose and scope of the extension|.
 | `extension_type` | Identifies the format of `data` | SHOULD be a [well known extension types](/well-known-extension-types.md).|
-| `data` | Attached data | MUST follow the format, specified by `type`.
+| `data` | Attached data | MUST follow the format, specified by `extension_type`.
 
 
 
