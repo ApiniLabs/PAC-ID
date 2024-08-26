@@ -32,7 +32,7 @@ The `PAC-ID` also serves as foundation for further Smart Building Blocks that pr
 
 ### Components
 
-A PAC-ID is composed of an `issuer` and `identifier` component. It is REQUIRED that the combination of `issuer` and `identifier` is globally unique.
+A `PAC-ID` is composed of an `issuer` and `identifier` component. It is REQUIRED that the combination of `issuer` and `identifier` is globally unique.
 
 | **Name** | **Meaning** | **Technical Requirements** | **Example** |
 | :--- | :--- | :--- | :--- |
@@ -56,7 +56,7 @@ A `PAC-ID` can be represented as a text in the form of a URL as follows:
 
 [^1]: according to [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986#appendix-A). All other URI components MUST be empty.
 
-An example PAC-ID, represented as URL:
+An example `PAC-ID`, represented as URL:
 ```
 HTTPS://PAC.METTORIUS.COM/-MD/21:210263
 ```
@@ -65,7 +65,7 @@ It is RECOMMENDED that the URL locates a human readable web page which at least 
 
 ### Transmission
 
-PAC-ID’s MAY be transmitted by any means adequate for the serialization format (URL Format) of `PAC-ID`s (e.g. QR code, NDEF, iBeacon, etc.).
+`PAC-ID`s MAY be transmitted by any means adequate for the serialization format (URL Format) of `PAC-ID`s (e.g. QR code, NDEF, iBeacon, etc.).
 
 #### Visual Markers
 
