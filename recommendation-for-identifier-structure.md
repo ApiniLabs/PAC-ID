@@ -1,13 +1,13 @@
 
 # How to Structure the Identifier of a ``PAC-ID``
-The specification of a ``PAC-ID`` was intentionally kept short. However it is RECOMMENDED to structure the `identifier` of the ``PAC-ID`` like so:
+The specification of a `PAC-ID` was intentionally kept short. However it is RECOMMENDED to structure the `identifier` of the `PAC-ID` like so:
 ![Segment groups](images/identifier_structure.png)
 
 
 The following chapters explain the composition in more detail.
 
 ## Identify the Category
-``PAC-ID``s might be used to identify various different categories of entities. Entities of different categories are treated differently (e.g. a substance can be aliquoted, while a device cannot; a method instructs a device what to do, while a run documents what was done). <br>
+`PAC-ID`s might be used to identify various different categories of entities. Entities of different categories are treated differently (e.g. a substance can be aliquoted, while a device cannot; a method instructs a device what to do, while a run documents what was done). <br>
 In order to account for these differences the first identifier segment MUST [^1] indicate the category.
 
 ![Segment groups](images/identifier_structure_category-id.png)
@@ -37,19 +37,10 @@ It is RECOMMENDED to use the following segment structure within a category:
 
 Example of a balance:
 ```
-HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:1234567/8008:20230205/8009:ABC
+HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263/8008:20230205/8009:ABC
                               |recommended segments|custom segments       |
                            ^ category key
 ```
-
-
-
-<!-- |[Category](#categories) | | | | | | |
-|:---|:---|:---|:---|:---|:---|:---|
-Device | `-MD` | `240` <br> (Model number) * | `21` <br> (Serial number) *|
-Substance | `-MS` | `240` <br> (Product number) * | `10` <br> (Batch number) | `20` <br> (Container size) | `21` <br> (Container number) | `250` <br> (Aliquot)
-Consumable | `-MC` | `240` <br> (Product number) * | `10` <br> (Batch number) | `20` <br> (Packaging size) | `21` <br> (Serial number) | `250` <br> (Aliquot)
-Misc | `-MM` | `240` <br> (Product number) * | `10` <br> (Batch Number) | `20` <br> (Packaging size) | `21` <br> (Serial number) | `250` <br> (Aliquot) -->
 
 ### Recommened Segments per Category
 Within a category the segments SHOULD follow this structure:
@@ -72,30 +63,30 @@ If nessecary custom segements CAN be added. If so, they MUST be placed after the
 In oder to reduce the number of characters a short form MAY be used. 
 
 ```
-HTTPS://PAC.METTORIUS.COM/-MD/BAL500/12345432/8008:20230205
+HTTPS://PAC.METTORIUS.COM/-MD/BAL500/210263/8008:20230205
 ```
 
 The short notation omits the keys for segments of each category. Keys are implicitly assigned based on the [segment order](#Best-practice-for-segment-structure-within-a-category) until an explicit key that differs is reached or an ID segment starting with “-“ is reached.
 Explicit keys can be used along implicit ones, as long as the order of segments is matched.
 
-e.g. for ``HTTPS://PAC.METTORIUS.COM/-MD/240:R300/12345432/8008:20230205``, 12345432 is still regarded to have implicit key 21. For ``HTTPS://PAC.METTORIUS.COM/-MD/240:R300/8008:20230205/12345432`` we can’t auto-assign a key for 12345432 as it is preceded by a segment with an explicit key. 12345432 is therefore interpreted as a custom segment.
+e.g. for ``HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/210263/8008:20230205``, 210263 is still regarded to have implicit key 21. For ``HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/8008:20230205/210263`` we can’t auto-assign a key for 12345432 as it is preceded by a segment with an explicit key. 12345432 is therefore interpreted as a custom segment.
 
 
 
 ## Category Concatenation
-Imagine a ``PAC-ID`` that points to a result set of a device. We’d usually want to know on which device that result was created. We CAN simply concatenate categories (in this case a material category to a data category):
+Imagine a `PAC-ID` that points to a result set of a device. We’d usually want to know on which device that result was created. We CAN simply concatenate categories (in this case a material category to a data category):
 
 ![Segment groups](images/identifier_structure_category-concatenation.png)
 
 Example:
 ```
-HTTPS://PAC.METTORIUS.COM/-DR/240:123ABC/8008:20230205/-MD/240:BAL2/21:123456
+HTTPS://PAC.METTORIUS.COM/-DR/240:123ABC/8008:20230205/-MD/240:BAL500/21:210263
                          | primary category           | additional category
 ```
 
-The advantage of this is that it allows resolving device related attributes and services (e.g. device operation manual,…) via the same coupling table information entries also used for ``PAC-ID``s relating to a device.
+The advantage of this is that it allows resolving device related attributes and services (e.g. device operation manual,…) via the same coupling table information entries also used for `PAC-ID`s relating to a device.
 
-The category of the item the ``PAC-ID`` is referring to, SHALL [^1] be the first category.. 
+The category of the item the `PAC-ID` is referring to, SHALL [^1] be the first category.. 
 
 
-[^1]: Conditional on the ``identifier`` being structured according to this recommendation.
+[^1]: Conditional on the `identifier` being structured according to this recommendation.
