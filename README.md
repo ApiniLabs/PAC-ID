@@ -6,7 +6,7 @@ A `PAC-ID`, which stands for **P**ublicly **A**ddressable **C**ontent **ID**enti
 
 Here is an example `PAC-ID`:
 ```
-HTTPS://PAC.METTORIUS.COM/-MD/21:210263
+HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263
 ```
 The `PAC-ID` can also be represented in alternative formats, including as a QR code:
 
@@ -58,7 +58,7 @@ A `PAC-ID` can be represented as a text in the form of a URL as follows:
 
 An example `PAC-ID`, represented as URL:
 ```
-HTTPS://PAC.METTORIUS.COM/-MD/21:210263
+HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263
 ```
 
 It is RECOMMENDED that the URL locates a human readable web page which at least discloses information about the `issuer`. The URL MAY also point to a default [`PAC-ID Resolver`](https://github.com/ApiniLabs/PAC-ID-Resolver) that is implemented as a web application on that URL.
@@ -73,7 +73,7 @@ If a `PAC-ID` is represented as QR code or data matrix code, a visual marker MUS
 
 ![A PAC-ID.](images/pac-id-example.svg)
 
-_The example PAC-ID `HTTPS://PAC.METTORIUS.COM/-MD/21:210263` represented as QR code._
+_The example PAC-ID `HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263` represented as QR code._
 
 ##### Placement of the Visual Marker
 
