@@ -1,10 +1,21 @@
 
 # How to Structure the Identifier of a ``PAC-ID``
-The specification of a `PAC-ID` was intentionally kept short. However it is RECOMMENDED to structure the `identifier` of the `PAC-ID` like so:
+
+While the basic specification for the `PAC-ID` has been intentionally kept minimal, `PAC-ID`s are much more powerful if they are issued both, systematically and with a bit of verbosity. This page contains recommendations how to structure the `identifier` of the `PAC-ID`. 
+They are designed around these goals goals:
+
+- Verbose enough so that it is always clear
+  - to what the ID is pointing to
+  - what the uniqueness scope is
+- Reliable and easy for service discovery with PAC-ID Resolver
+
+## Recommended Structure of the `identifier`
+It is RECOMMENDED to use this structure of the `identifier`:
 ![Segment groups](images/identifier_structure.png)
 
 
 The following chapters explain the composition in more detail.
+
 
 ## Identify the Category
 `PAC-ID`s might be used to identify various different categories of entities. Entities of different categories are treated differently (e.g. a substance can be aliquoted, while a device cannot; a method instructs a device what to do, while a run documents what was done). <br>
@@ -14,19 +25,19 @@ In order to account for these differences the first identifier segment MUST [^1]
 
 
 These categories MUST [^1] by used:
-| **Meaning** | **Characteristics**| **category_segment** |
-| :--- | :--- | :--- |
-| **Materials**||||
-| **Device** | uniquely identifiable item, non-aliquotable, not dividable| `-MD` |
-| **Substance** <br> Source Material, Aliquot, Sample, Product | uniquely identifiable item, aliquotable/dividable | `-MS` |
-| **Consumable** <br> (typically bulk goods with limited lifespan) | uniquely identifiable type of item, typically countable | `-MC` |
-| **Misc Material** | anything that doesn’t fit other M types - ideally never used |`-MM` |
-**Data**
-| **Calibration** <br> Basic Configuration | changeable but valid for all DM/DP/DR | `-DC` |
-| **Method** <br> Run Configuration, Receipe, SOP | a definition of a certain process | `-DM` |
-| **Progress** <br> Status Update, Live Data | data of time-limited validity occurring while a DM is executed. | `-DP` |
-| **Result** <br> Completed Run Data, Report, CoA | data that is a direct result of a completed DM run. | `-DR` | 
-| **Static Properties** |  metadata, datasheet, master data, physical properties. Unchangeable, universally true | `-DS` |
+**category_key** |**Main** |**Sub**| **Meaning** |
+| :--- | :--- | :--- | :--- |
+|`MD` | M | D | **Device** <br> _uniquely identifiable item, non-aliquotable, not dividable_| 
+ `MS` | M | S | **Substance** <br> Source Material, Aliquot, Sample, Product <br> _uniquely identifiable item, aliquotable/dividable_ |
+| `MC` | M | C | **Consumable** <br> (typically bulk goods with limited lifespan) <br> _uniquely identifiable type of item, typically countable_ 
+|`MM` | M | M | **Misc Material** <br> _anything that doesn’t fit other M types - **ideally never used**_ 
+| `DC` | D | C | **Calibration** <br> Basic Configuration | changeable but valid for all DM/DP/DR 
+| `DM` | D | M | **Method** <br> Run Configuration, Receipe, SOP | a definition of a certain process 
+| `DP` | D | P | **Progress** <br> Status Update, Live Data <br> _data of time-limited validity occurring while a DM is executed._
+| `DR` | D | R | **Result** <br> Completed Run Data, Report, CoA <br> _data that is a direct result of a completed DM run._
+| `DS` | D | S | **Static Properties** <br> metadata, datasheet, master data, physical properties. <br> _Unchangeable, universally true_ 
+
+
 
 
 
@@ -89,4 +100,4 @@ The advantage of this is that it allows resolving device related attributes and 
 The category of the item the `PAC-ID` is referring to, SHALL [^1] be the first category.. 
 
 
-[^1]: Conditional on the `identifier` being structured according to this recommendation.
+[^1]: Altough is not mandatory to follow the recommenation on this page, this rule MUST be applied **if** the identifier is structured according to the recommendations on this page.
