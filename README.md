@@ -117,12 +117,17 @@ Using multiple `id segment`s might seem like unnecessary overhead at first. Addi
 - Using the key/value syntax (`id segment key` `:` `id segment value`) with [well-known `id segment keys`](well-known-id-segment-keys.md) enables `PAC-ID` routing in generic contexts.
 
 ## PAC-ID Extension
+`PAC-ID`s can be extended with custom information after a * character. The * character and subsequent characters are not part of the `PAC-ID` and can therefore freely be used for one or multiple `extension`s. In order to facilitate parsing and rendering by systems like [PAC-ID resolver](https://github.com/ApiniLabs/PAC-ID-Resolver), `name` and `type` of the `extension` MUST be specified.
+
+
+Railroad diagram depicting the `extension`'s structure: ![Structure of extensions](images/railroad-diagram-extension.svg)
 
 | **Name** | **Meaning** | **Technical Requirements** |
 | :--- | :--- | :--- | 
 | `name` | Name of the extension | SHOULD indicate the purpose and scope of the extension|.
-| `extension_type` | Identifies the format of `data` | SHOULD be a [well known extension types](/well-known-extension-types.md).|
-| `data` | Attached data | MUST follow the format, specified by `type`.
+| `type` | Identifies the format of `data` | SHOULD be a [well known extension types](/well-known-extension-types.md).|
+| `data` | Attached data | MUST be in the format, specified by `type`.
+
 
 
 
