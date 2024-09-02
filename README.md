@@ -130,7 +130,6 @@ Railroad diagram depicting the `extension`'s structure: ![Structure of extension
 
 
 
-
 An example of a PAC-ID with two extensions, one describing the calibration state of a balance, the other it's current measurements:
 ```
 HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263*CAL$TREX/START$T.D:20240822+PF$T.B:T+17$T.D:20250822*CUR$TREX/TARE$MGM:2.5E2+ENV$KEL:293.15
