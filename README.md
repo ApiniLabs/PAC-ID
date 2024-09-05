@@ -117,24 +117,48 @@ Using multiple `id segment`s might seem like unnecessary overhead at first. Addi
 - Using the key/value syntax (`id segment key` `:` `id segment value`) with [well-known `id segment keys`](well-known-id-segment-keys.md) enables `PAC-ID` routing in generic contexts.
 
 ## PAC-ID Extension
-`PAC-ID`s can be extended with custom information after a * character. The * character and subsequent characters are not part of the `PAC-ID` and can therefore freely be used for one or multiple `extension`s. In order to facilitate parsing and rendering by systems like [PAC-ID resolver](https://github.com/ApiniLabs/PAC-ID-Resolver), `name` and `type` of the `extension` MUST be specified.
+`PAC-ID`s CAN be extended with custom information in one or multiple `extension`s. They MUST be separated from the `PAC-ID` and from each other with a `*`.
 
-
-Railroad diagram depicting the `extension`'s structure: ![Structure of extensions](images/railroad-diagram-extension.svg)
+### Structure of `extension`
+Railroad diagram depicting the `extension`'s structure: 
+![Structure of extensions](images/railroad-diagram-extension.svg)
 
 | **Name** | **Meaning** | **Technical Requirements** |
 | :--- | :--- | :--- | 
 | `name` | Name of the extension | SHOULD indicate the purpose and scope of the extension|.
 | `type` | Identifies the format of `data` | SHOULD be a [well known extension types](/well-known-extension-types.md).|
-| `data` | Attached data | MUST be in the format, specified by `type`.
+| `data` | Attached data | MUST be in the format, specified by `type`. <br> MUST NOT contain the character `/`
 
+It is RECOMMENDED to specify `name` and `type` of the `extension`, followed by a `/`. 
 
+### Recommendation: Summary of What the PAC-ID Is Pointing At
+The first extension SHOULD provide a summary of what the `PAC-ID` points to. The `name` of this extension SHOULD be `SUM` and it SHOULD be in [`T-REX`](https://github.com/ApiniLabs/T-REX) format. 
 
-An example of a PAC-ID with two extensions, one describing the calibration state of a balance, the other it's current measurements:
+As example the result of a balance. The summary contains the measured weight `WEIGHt` and the tare `TARE`
 ```
-HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263*CAL$TREX/START$T.D:20240822+PF$T.B:T+17$T.D:20250822*CUR$TREX/TARE$MGM:2.5E2+ENV$KEL:293.15
-                                                  |extension 1                                         |extension 2
+HTTPS://PAC.METTORIUS.COM/-DR/8956757*SUM$TREX/WEIGHT$GRM:2.05+TARE$GRM:100.01
 ```
+
+Another example: `extension` of a balance, where the summary contains the balances precision `PREC` and maximum weight `MAXWEIGHT`:
+```
+HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263*SUM$TREX/PREC$GRM:0.01+MAXWEIGHT$GRM:250
+```
+
+#### Short Notation
+If `name` and `type` of the first extension are omitted, it is assumed to be in `T-REX` format and summarize the entity the `PAC-ID` refers to. 
+
+Here is the short notation of the first example above:
+```
+HTTPS://PAC.METTORIUS.COM/-DR/8956757*WEIGHT$GRM:2.05+TARE$GRM:100.01
+```
+
+The short notation of the second example:
+```
+HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263*PREC$GRM:0.01+MAXWEIGHT$GRM:250
+```
+
+
+
 
 
 ## Terminology Used
