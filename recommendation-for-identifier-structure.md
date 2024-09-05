@@ -5,7 +5,7 @@ While the basic specification for the `PAC-ID` has been intentionally kept minim
 They are designed around these goals goals:
 
 - Verbose enough so that it is always clear
-  - to what the ID is pointing to
+  - to what the `PAC-ID` is pointing to
   - what the uniqueness scope is
 - Reliable and easy for service discovery with PAC-ID Resolver
 
@@ -21,11 +21,8 @@ The following chapters explain the composition in more detail.
 `PAC-ID`s might be used to identify various different categories of entities. Entities of different categories are treated differently (e.g. a substance can be aliquoted, while a device cannot; a method instructs a device what to do, while a run documents what was done). <br>
 In order to account for these differences the first identifier segment MUST [^1] indicate the category.
 
-![Segment groups](images/identifier_structure_category-id.png)
-
-
 These categories MUST [^1] by used:
-**category_key** |**Main** |**Sub**| **Meaning** |
+**`category key`** |**Main** |**Sub**| **Meaning** |
 | :--- | :--- | :--- | :--- |
 |`MD` | M | D | **Device** <br> _uniquely identifiable item, non-aliquotable, not dividable_| 
  `MS` | M | S | **Substance** <br> Source Material, Aliquot, Sample, Product <br> _uniquely identifiable item, aliquotable/dividable_ |
@@ -44,12 +41,10 @@ These categories MUST [^1] by used:
 ## Segment Structure Within a Category 
 It is RECOMMENDED to use the following segment structure within a category:
 
-![Segment groups](images/identifier_structure_category-segments.png)
-
 Example of a balance:
 ```
 HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263/8008:20230205/8009:ABC
-                              |recommended segments|custom segments       |
+                              |recommended segments|custom segments      |
                            ^ category key
 ```
 
@@ -86,8 +81,6 @@ e.g. for ``HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/210263/8008:20230205``, 2102
 
 ## Category Concatenation
 Imagine a `PAC-ID` that points to a result set of a device. We’d usually want to know on which device that result was created. We CAN simply concatenate categories (in this case a material category to a data category):
-
-![Segment groups](images/identifier_structure_category-concatenation.png)
 
 Example:
 ```
