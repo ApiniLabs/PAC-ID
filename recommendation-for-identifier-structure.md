@@ -11,7 +11,7 @@ They are designed around these goals goals:
 
 ## Recommended Structure of the `identifier`
 It is RECOMMENDED to use this structure of the `identifier`:
-![Segment groups](images/identifier_structure.png)
+![Segment groups](images/identifier-recommended-structure.svg )
 
 
 The following chapters explain the composition in more detail.
