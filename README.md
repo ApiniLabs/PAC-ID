@@ -120,9 +120,7 @@ Using multiple `id segment`s might seem like unnecessary overhead at first. Addi
 `PAC-ID`s CAN be extended with custom information in one or multiple `extension`s. They MUST be separated from the `PAC-ID` and from each other with a `*`.
 `PAC-ID`s CAN be extended with custom information in one or multiple `extension`s. They MUST be separated from the `PAC-ID` and from each other with a `*`.
 
-### Structure of `extension`
-Railroad diagram depicting the `extension`'s structure: 
-![Structure of extensions](images/railroad-diagram-extension.svg)
+
 ### Structure of `extension`
 Railroad diagram depicting the `extension`'s structure: 
 ![Structure of extensions](images/railroad-diagram-extension.svg)
@@ -159,11 +157,6 @@ HTTPS://PAC.METTORIUS.COM/-DR/8956757*WEIGHT$GRM:2.05+TARE$GRM:100.01
 The short notation of the second example:
 ```
 HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263*PREC$GRM:0.01+MAXWEIGHT$GRM:250
-```
-
-
-
-HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263*SUM$TREX/PREC$GRM:0.01+MAXWEIGHT$GRM:250
 ```
 
 #### Short Notation
