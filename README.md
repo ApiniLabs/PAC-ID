@@ -118,7 +118,11 @@ Using multiple `id segment`s might seem like unnecessary overhead at first. Addi
 
 ## PAC-ID Extension
 `PAC-ID`s CAN be extended with custom information in one or multiple `extension`s. They MUST be separated from the `PAC-ID` and from each other with a `*`.
+`PAC-ID`s CAN be extended with custom information in one or multiple `extension`s. They MUST be separated from the `PAC-ID` and from each other with a `*`.
 
+### Structure of `extension`
+Railroad diagram depicting the `extension`'s structure: 
+![Structure of extensions](images/railroad-diagram-extension.svg)
 ### Structure of `extension`
 Railroad diagram depicting the `extension`'s structure: 
 ![Structure of extensions](images/railroad-diagram-extension.svg)
@@ -141,6 +145,24 @@ HTTPS://PAC.METTORIUS.COM/-DR/8956757*SUM$TREX/WEIGHT$GRM:2.05+TARE$GRM:100.01
 
 Another example: `extension` of a balance, where the summary contains the balances precision `PREC` and maximum weight `MAXWEIGHT`:
 ```
+HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263*SUM$TREX/PREC$GRM:0.01+MAXWEIGHT$GRM:250
+```
+
+#### Short Notation
+If `name` and `type` of the first extension are omitted, it is assumed to be in `T-REX` format and summarize the entity the `PAC-ID` refers to. 
+
+Here is the short notation of the first example above:
+```
+HTTPS://PAC.METTORIUS.COM/-DR/8956757*WEIGHT$GRM:2.05+TARE$GRM:100.01
+```
+
+The short notation of the second example:
+```
+HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263*PREC$GRM:0.01+MAXWEIGHT$GRM:250
+```
+
+
+
 HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263*SUM$TREX/PREC$GRM:0.01+MAXWEIGHT$GRM:250
 ```
 
