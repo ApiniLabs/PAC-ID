@@ -136,7 +136,7 @@ It is RECOMMENDED to specify `name` and `type` of the `extension`, followed by a
 ### Recommendation: Summary of What the PAC-ID Is Pointing At
 The first extension SHOULD provide a summary of what the `PAC-ID` points to. The `name` of this extension SHOULD be `SUM` and it SHOULD be in [`T-REX`](https://github.com/ApiniLabs/T-REX) format. 
 
-As example the result of a balance. The summary contains the measured weight `WEIGHT` and the tare `TARE`
+As example the result of a balance, where the summary contains the measured weight `WEIGHT` and the tare `TARE`:
 ```
 HTTPS://PAC.METTORIUS.COM/-DR/8956757*SUM$TREX/WEIGHT$GRM:2.05+TARE$GRM:100.01
 ```
@@ -159,18 +159,7 @@ The short notation of the second example:
 HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263*PREC$GRM:0.01+MAXWEIGHT$GRM:250
 ```
 
-#### Short Notation
-If `name` and `type` of the first extension are omitted, it is assumed to be in `T-REX` format and summarize the entity the `PAC-ID` refers to. 
 
-Here is the short notation of the first example above:
-```
-HTTPS://PAC.METTORIUS.COM/-DR/8956757*WEIGHT$GRM:2.05+TARE$GRM:100.01
-```
-
-The short notation of the second example:
-```
-HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263*PREC$GRM:0.01+MAXWEIGHT$GRM:250
-```
 
 
 
