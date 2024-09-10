@@ -119,7 +119,7 @@ Using multiple `id segment`s might seem like unnecessary overhead at first. Addi
 ## PAC-ID Extension
 `PAC-ID`s CAN be extended with custom information in one or multiple `extension`s. They MUST be separated from the `PAC-ID` and from each other with a `*`.
 
-### Structure of `extension`
+### Structure of an `extension`
 Railroad diagram depicting the `extension`'s structure: 
 ![Structure of extensions](images/railroad-diagram-extension.svg)
 
@@ -129,23 +129,23 @@ Railroad diagram depicting the `extension`'s structure:
 | `type` | Identifies the format of `data` | SHOULD be a [well known extension types](/well-known-extension-types.md).|
 | `data` | Attached data | MUST be in the format, specified by `type`. <br> MUST NOT contain the character `/`
 
-It is RECOMMENDED to specify `name` and `type` of the `extension`, followed by a `/`. 
+It is RECOMMENDED to specify `name` and `type` of the `extension`. If specified, they MUST be followed by a `/`. 
 
 ### Recommendation: Summary of What the PAC-ID Is Pointing At
-The first extension SHOULD provide a summary of what the `PAC-ID` points to. The `name` of this extension SHOULD be `SUM` and it SHOULD be in [`T-REX`](https://github.com/ApiniLabs/T-REX) format. 
+The first extension SHOULD provide a summary of what the `PAC-ID` points to. The `name` of this extension SHOULD be `SUM` and it SHOULD be in the [`T-REX`](https://github.com/ApiniLabs/T-REX) format. 
 
-As example the result of a balance, where the summary contains the measured weight `WEIGHT` and the tare `TARE`:
+As an example, a `PAC-ID` pointing to a result set measured by a balance, where the summary contains the measured weight `WEIGHT` and the tare `TARE`:
 ```
 HTTPS://PAC.METTORIUS.COM/-DR/8956757*SUM$TREX/WEIGHT$GRM:2.05+TARE$GRM:100.01
 ```
 
-Another example: `extension` of a balance, where the summary contains the balances precision `PREC` and maximum weight `MAXWEIGHT`:
+Another example: a `PAC-ID` pointing to the balance itself, where the summary contains the balance's precision `PREC` and maximum supported weight `MAXWEIGHT`:
 ```
 HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263*SUM$TREX/PREC$GRM:0.01+MAXWEIGHT$GRM:250
 ```
 
 #### Short Notation
-If `name` and `type` of the first extension are omitted, it is assumed to be in `T-REX` format and summarize the entity the `PAC-ID` refers to. 
+If `name` and `type` of the first `extension` are omitted, it is assumed to be in `T-REX` format and to summarize the entity the `PAC-ID` refers to. 
 
 Here is the short notation of the first example above:
 ```
@@ -156,12 +156,6 @@ The short notation of the second example:
 ```
 HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263*PREC$GRM:0.01+MAXWEIGHT$GRM:250
 ```
-
-
-
-
-
-
 
 ## Terminology Used
 
