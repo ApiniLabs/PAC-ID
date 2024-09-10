@@ -118,8 +118,6 @@ Using multiple `id segment`s might seem like unnecessary overhead at first. Addi
 
 ## PAC-ID Extension
 `PAC-ID`s CAN be extended with custom information in one or multiple `extension`s. They MUST be separated from the `PAC-ID` and from each other with a `*`.
-`PAC-ID`s CAN be extended with custom information in one or multiple `extension`s. They MUST be separated from the `PAC-ID` and from each other with a `*`.
-
 
 ### Structure of `extension`
 Railroad diagram depicting the `extension`'s structure: 
