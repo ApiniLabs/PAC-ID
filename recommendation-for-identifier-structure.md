@@ -59,7 +59,7 @@ Consumable |**`-MC` <br> `240`  (Product number)** <br> `10` (Batch number) <br>
 Misc | **`-MM` <br> `240` (Product number)** <br> `10`  (Batch Number) <br> `20` (Packaging size) <br> `21` (Serial number) <br> `250` (Aliquot)
 
 
-Segments in **bold** MUST [^1] be used, the other segments SHOULD be added if they are available. The order SHOULD be preserved, even of optional segments are omitted.
+Segments in **bold** MUST [^1] be used, the other segments SHOULD be added if they are available. The order SHOULD be preserved, even if optional segments are omitted.
 
 
 ### Custom Segments:
