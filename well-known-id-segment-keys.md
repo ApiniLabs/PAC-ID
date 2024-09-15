@@ -21,6 +21,7 @@ The following approach SHALL be used to define an `id segment key`:
 | `RST` | PAC-ID-COMMONS | A result id (i.e. an id pointing to result data) |
 | `MTD` | PAC-ID-COMMONS | A method id; e.g. a reference to an SOP (standard operating procedure) |
 | `RPT` | PAC-ID-COMMONS | A report id; e.g. a reference to a result report |
+| `TS` | PAC-ID-COMMONS | A timestamp. It is RECOMMENDED to use YYYYMMDDTHHMM, YYYYMMDDTHHMMSS or YYYYMMDDTHHMMSS in ISO8601 Basic Format|
 | `V` |  PAC-ID-COMMONS | A version or revision number. It is RECOMMENDED to use version numbers that follows the [semantic versioning](https://semver.org/) guidelines. |
 
 [^1]: [GS1](https://www.gs1.org/) (Global Standards 1) is a not-for-profit organisation that works closely with industries to agree how information should be stored in a barcode. This ensures organisations around the world can extract meaningful information about a product when its barcode is scanned. The organization, however, has an eCommerce focus. Especially for data-related id segments, it is often unclear what an adequate key choice would be. There is value in having clarity about that aspect because this will lead to more uniform, vendor-indepent interpretable `id segment key`s, which in turn greatly simplify routing via a `PAC-ID Resolver`.
