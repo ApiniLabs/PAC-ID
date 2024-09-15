@@ -62,8 +62,8 @@ Misc | **`-MM` <br> `240` (Product number)** <br> `10`  (Batch Number) <br> `20`
 Segments in **bold** MUST [^1] be used, the other segments SHOULD be added if they are available. The order SHOULD be preserved, even if optional segments are omitted.
 
 
-### Custom Segments:
-If nessecary custom segements CAN be added. If so, they MUST be placed after the recommended segments.
+### Custom Segments
+If needed, custom segements CAN be added. If so, they MUST be placed after the recommended segments.
 
 ### Short Notation
 In oder to reduce the number of characters a short form MAY be used. 
