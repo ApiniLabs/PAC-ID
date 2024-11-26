@@ -117,10 +117,52 @@ Using multiple `id segment`s might seem like unnecessary overhead at first. Addi
 - Using the key/value syntax (`id segment key` `:` `id segment value`) with [well-known `id key`](well-known-keys.md) enables `PAC-ID` routing in generic contexts.
 
 ## PAC-ID Extension
+`PAC-ID`s CAN be extended with custom information in one or multiple `extension`s. They MUST be separated from the `PAC-ID` and from each other with a `*`.
 
-`PAC-ID`s can be extended with custom information after a `*` character. As stated above, the `*` character and subsequent characters are not part of the `PAC-ID` and can therefore be used for custom extensions. 
+### Structure of an `extension`
+Railroad diagram depicting the `extension`'s structure: 
+![Structure of extensions](images/railroad-diagram-extension.svg)
 
-A well-known extension is the [T-REX](https://github.com/ApiniLabs/T-REX).
+| **Name** | **Meaning** | **Technical Requirements** |
+| :--- | :--- | :--- | 
+| `key` | Name of the extension | SHOULD indicate the purpose and scope of the extension|.
+| `type` | Identifies the format of `data` | SHOULD be a [well known extension types](/well-known-extension-types.md).|
+| `data` | Attached data | MUST be in the format, specified by `type`. <br> MUST NOT contain the character `/`
+
+It is RECOMMENDED to specify `key` and `type` of the `extension`. If specified, they MUST be followed by a `/`. 
+
+### Recommendation: `Display Name` and `Summary` 
+
+The first extension SHOULD provide a `Display Name`. The `key` of this extension SHOULD be `N` and it SHOULD be in the [BASE36](/base36_extension.md) format.
+
+
+The second extension SHOULD provide a summary of what the `PAC-ID` points to. The `key` of this extension SHOULD be `SUM` and it SHOULD be in the [T-REX](https://github.com/ApiniLabs/T-REX) format. 
+
+
+As an example, a `PAC-ID` pointing to a result set "Smørrebrød µ-Nutrients" measured by a balance, where the summary contains the measured weight `WEIGHT` and the tare `TARE`:
+```
+HTTPS://PAC.METTORIUS.COM/-DR/8956757*N$T.T/3SQHOW5NBOGUZDM4VWC9N3K99JT3WO0X28DAXDF*SUM$TREX/WEIGHT$GRM:2.05+TARE$GRM:100.01
+```
+
+Another example: a `PAC-ID` pointing to the balance with `Display Name` "B-500 Balance" itself, where the summary contains the balance's precision `PREC` and maximum supported weight `MAXWEIGHT`:
+```
+HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263*N$T.T/E4BLEW6R5EVD7XMGHG11*SUM$TREX/PREC$GRM:0.01+MAXWEIGHT$GRM:250
+```
+
+#### Short Notation
+If `key` and `type` of the first  `extension` are omitted, it MUST be in `BASE36` format and to contain the `Display Name`. 
+If `key` and `type` of the second `extension` are omitted, it MUST be in `T-REX` format and to summarize the entity the `PAC-ID` refers to. 
+
+
+Here is the short notation of the first example above:
+```
+HTTPS://PAC.METTORIUS.COM/-DR/8956757*3SQHOW5NBOGUZDM4VWC9N3K99JT3WO0X28DAXDF/WEIGHT$GRM:2.05+TARE$GRM:100.01
+```
+
+The short notation of the second example:
+```
+HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263*E4BLEW6R5EVD7XMGHG11*PREC$GRM:0.01+MAXWEIGHT$GRM:250
+```
 
 ## Terminology Used
 
