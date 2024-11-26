@@ -1,58 +1,25 @@
 
 # Introduction
-QR codes are more efficient with _alphanumeric_ mode. `PAC-ID`s, thus only use characters `0–9`, `A–Z` (upper-case only) and `$*+-./,:`. If only one character is not in this set, the QR code becomes ~30% larger. 
-For certain texts - in particular a `Display Name` - it is desirable that an extended character set can be used. 
+QR codes are more efficiently encoded with _alphanumeric_ mode, which uses a limited character set. If only one character is outside this set, the QR code becomes ~30% larger. `PAC-ID`s, thus only use characters `0–9`, `A–Z` (upper-case only) and `$*+-./,:`.  
 
-In order to keep the efficent encoding of the PAC-ID as a whole, this extension is encoding a string with arbitratry unicode characters in base36.
+For certain texts - in particular a `Display Name` - it is desirable that an extended character set can be used. 
+This extension allows to use arbitrary unicode characters, which are encoded in base36. Although the encoded string will take up more space the PAC-ID as a whole can still be encoded in the efficient _alphanumeric_ mode.
 
 
 
 # Specification
 
-Extension type: `T.T`
+## Extension type
+`T.T` must be used for this extension's `type`.
 
-The text MUST first be encoded in UTF-8.
-The resulting bytes convert to base 36. 
-- Big endianness.
-- The alphabet is 01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ
-
-The general idea:
-- first encode text as utf-8 (note this will use variable number of bytes per character)
-- the result encode an base36
-
-
-
-
-
-## Implementation Caviats
-Notes on base 36:
-The alphabet is 01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ
-While this is often assumed by libraries it is ultimately an arbirtrary choice. Be careful when using libraries.
-
-decoding in python:
+Example: `PAC-ID` of a balance, with a base 36 extension.
 ```
-num = int(s36, 36) # this t
-num_bytes = (num.bit_length() + 7) // 8
-_bytes = num.to_bytes(num_bytes, byteorder='big')
-```
-
-decoding 
-Be careful, decoding of longer base36 can overflow memory.
+HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263*EXAMPLEOFBASE36$T.T/E4BLEW6R5EVD7XMGHG11
 
 
-in javascript:
-parseInt(s, base) (oddly) returns a float, which beyond 2^53 loses precision. One has to parse character wise:
-```
-let result = BigInt(0);
-const base = BigInt(36);
-
- for (const char of base36String) {
-        const digitValue = BigInt(parseInt(char, 36)); // Get digit value
-        result = result * base + digitValue; // Accumulate the result
-    }
-```
-
-
+## Encoding
+- The text MUST first be encoded in UTF-8.
+- The resulting bytes MUST be converted to base 36 with the alphabet `01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ`. 
 
 # Examples
 ``` 
