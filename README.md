@@ -133,13 +133,12 @@ It is RECOMMENDED to specify `key` and `type` of the `extension`. If specified, 
 
 ### Recommendation: `Display Name` and `Summary` 
 
-The first extension SHOULD provide a `Display Name`. The `key` of this extension SHOULD be `N` and it SHOULD be in the [BASE36](/base36_extension.md) format.
-
+The first extension SHOULD provide a `Display Name`. The `key` of this extension SHOULD be `N` and it SHOULD be in the [Base36](/base36_extension.md) format.
 
 The second extension SHOULD provide a summary of what the `PAC-ID` points to. The `key` of this extension SHOULD be `SUM` and it SHOULD be in the [T-REX](https://github.com/ApiniLabs/T-REX) format. 
 
 
-As an example, a `PAC-ID` pointing to a result set "Smørrebrød µ-Nutrients" measured by a balance, where the summary contains the measured weight `WEIGHT` and the tare `TARE`:
+Example: a `PAC-ID` pointing to a result set "Smørrebrød µ-Nutrients" measured by a balance, where the summary contains the measured weight `WEIGHT` and the tare `TARE`:
 ```
 HTTPS://PAC.METTORIUS.COM/-DR/8956757*N$T.T/3SQHOW5NBOGUZDM4VWC9N3K99JT3WO0X28DAXDF*SUM$TREX/WEIGHT$GRM:2.05+TARE$GRM:100.01
 ```
@@ -150,8 +149,8 @@ HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263*N$T.T/E4BLEW6R5EVD7XMGHG11*SU
 ```
 
 #### Short Notation
-If `key` and `type` of the first  `extension` are omitted, it MUST be in `BASE36` format and to contain the `Display Name`. 
-If `key` and `type` of the second `extension` are omitted, it MUST be in `T-REX` format and to summarize the entity the `PAC-ID` refers to. 
+If `key` and `type` of the first `extension` are omitted, it MUST be in [Base36](/base36_extension.md) format and contain the `Display Name`. 
+If `key` and `type` of both, the first and second `extension` are omitted, the second extension MUST be in [T-REX](https://github.com/ApiniLabs/T-REX) format and summarize the entity the `PAC-ID` refers to. 
 
 
 Here is the short notation of the first example above:
