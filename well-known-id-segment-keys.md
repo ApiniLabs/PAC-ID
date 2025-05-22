@@ -12,8 +12,10 @@ The following approach SHALL be used to define an `id segment key`:
 | :--- | :--- | :--- |
 | `01` | GS1 AI[^1] | Global Trade Item Number (GTIN) |
 | `10` | GS1 AI[^1] | Batch or lot number |
+| `20` | GS1 AI[^1] | Internal product variant|
 | `21` | GS1 AI[^1] | Serial number |
 | `240` | GS1 AI[^1] | Additional product identification assigned by the manufacturer. For all articles without GTIN; otherwise use `id segment key` `01` instead. |
+| `250` | GS1 AI[^1] | Secondary serial number |
 | `RNA` | PAC-ID-COMMONS | An absolute run id (i.e. unique in itself without further information) |
 | `RNR` | PAC-ID-COMMONS | A relative run id (i.e. only unique together with other information, e.g. a device identifier) |
 | `SMP` | PAC-ID-COMMONS | A sample id |
