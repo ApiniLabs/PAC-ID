@@ -1,9 +1,9 @@
 
 ## Introduction
-QR codes are more efficiently encoded with _alphanumeric_ mode, which uses a limited character set. If only one character is outside this set, the QR code becomes ~30% larger. `PAC-ID`s, thus only use characters `0–9`, `A–Z` (upper-case only) and `$*+-./,:`.  
+QR codes are more efficiently encoded with _alphanumeric_ mode, which uses a limited character set. If only one character is outside this set, the QR code becomes ~30% larger. `PAC-ID`s, thus only use characters `0–9`, `A–Z` (upper-case only), and `$*+-./,:`.  
 
 For certain texts - in particular a `Display Name` - it is desirable that an extended character set can be used. 
-This extension allows to use arbitrary unicode characters, which are encoded in base36. Although the encoded string will take up more space the PAC-ID as a whole can still be encoded in the efficient _alphanumeric_ mode.
+This extension allows the use of arbitrary Unicode characters, which are encoded in base36. Although the encoded string will take up more space, the PAC-ID as a whole can still be encoded in the efficient _alphanumeric_ mode.
 
 
 ## Specification

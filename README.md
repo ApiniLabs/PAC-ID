@@ -14,11 +14,11 @@ The `PAC-ID` can also be represented in alternative formats, including as a QR c
 
 ## Introduction
 
-Laboratory software needs to unambiguously refer to real world objects and data. Typically, this is achieved by assigning unique identifiers to objects and data sets. As of today, each software product creates its own proprietary identifiers. With an increasing number of software products deployed in labs, objects usually end up having multiple identifiers. This impacts usability, causes errors and increases maintenance efforts.
+Laboratory software needs to unambiguously refer to real-world objects and data. Typically, this is achieved by assigning unique identifiers to objects and data sets. As of today, each software product creates its own proprietary identifiers. With an increasing number of software products deployed in labs, objects usually end up having multiple identifiers. This impacts usability, causes errors,and increases maintenance efforts.
 
-![The Balance is known under multiple identifiers as each system issues its own.](images/balance-multiple.svg)
+![The Balance is known under multiple identifiers, as each system issues its own.](images/balance-multiple.svg)
 
-_The Balance is known under **multiple** identifiers as each system issues its own._
+_The Balance is known under **multiple** identifiers, as each system issues its own._
 
 As part of the Smart Building Blocks for Digital Labs initiative, the **publicly addressable content identifier ("PAC-ID")** addresses this by promoting the re-use of already existing identifiers. The identifier is augmented with information about the issuing system and is represented in standardized formats, thus making it globally unique and reusable across system borders.
 
@@ -26,7 +26,7 @@ As part of the Smart Building Blocks for Digital Labs initiative, the **publicly
 
 _All systems are using the **same** globally unique identifier for referring to the balance._
 
-The `PAC-ID` also serves as foundation for further Smart Building Blocks that provide functionality that wouldn’t be feasible with proprietary identifiers.
+The `PAC-ID` also serves as a foundation for further Smart Building Blocks that provide functionality that wouldn’t be feasible with proprietary identifiers.
 
 ## Specification
 
