@@ -14,19 +14,19 @@ The `PAC-ID` can also be represented in alternative formats, including as a QR c
 
 ## Introduction
 
-Laboratory software needs to unambiguously refer to real-world objects and data. Typically, this is achieved by assigning unique identifiers to objects and data sets. As of today, each software product creates its own proprietary identifiers. With an increasing number of software products deployed in labs, objects usually end up having multiple identifiers. This impacts usability, causes errors,and increases maintenance efforts.
+Laboratory software needs to unambiguously refer to real-world objects and data. Typically, this is achieved by assigning unique identifiers to objects and data sets. As of today, each software product creates its own proprietary identifiers. With an increasing number of software products deployed in labs, objects usually end up having multiple identifiers. This impacts usability, causes errors, and increases maintenance efforts.
 
 ![The Balance is known under multiple identifiers, as each system issues its own.](images/balance-multiple.svg)
 
 _The Balance is known under **multiple** identifiers, as each system issues its own._
 
-As part of the Smart Building Blocks for Digital Labs initiative, the **publicly addressable content identifier ("PAC-ID")** addresses this by promoting the re-use of already existing identifiers. The identifier is augmented with information about the issuing system and is represented in standardized formats, thus making it globally unique and reusable across system borders.
+As part of the [LabFreed initiative](https://labfreed.org), the **publicly addressable content identifier ("PAC-ID")** addresses this by promoting the re-use of already existing identifiers. The identifier is augmented with information about the issuing system and is represented in standardized formats, thus making it globally unique and reusable across system borders.
 
 ![All systems are using the same globally unique identifier for referring to the balance.](images/balance-same.svg)
 
 _All systems are using the **same** globally unique identifier for referring to the balance._
 
-The `PAC-ID` also serves as a foundation for further Smart Building Blocks that provide functionality that wouldn’t be feasible with proprietary identifiers.
+The `PAC-ID` also serves as a foundation for further LabFreed Building Blocks that provide functionality that wouldn’t be feasible with proprietary identifiers.
 
 ## Specification
 
@@ -108,7 +108,7 @@ For legacy systems it is recommended to use identifiers as is (with URL-encoding
 
 ### Design Considerations for `identifier` and `id segment`
 
-Using multiple `id segment`s might seem like unnecessary overhead at first. Adding a few additional `id segment`s, however considerably increases the usefulness of `PAC-ID`s. In conjunction with other Smart Building Blocks, especially the `PAC-ID Resolver`. The `PAC-ID Resolver` is able to provide user-handovers/routing to systems that provide information about the corresponding `PAC-ID`. See [PAC-ID Resolver on GitHub](https://github.com/ApiniLabs/pac-id-resolver) for more info.
+Using multiple `id segment`s might seem like unnecessary overhead at first. Adding a few additional `id segment`s, however considerably increases the usefulness of `PAC-ID`s. In conjunction with other LabFreed Building Blocks, especially the `PAC-ID Resolver`. The `PAC-ID Resolver` is able to provide user-handovers/routing to systems that provide information about the corresponding `PAC-ID`. See [PAC-ID Resolver on GitHub](https://github.com/ApiniLabs/pac-id-resolver) for more info.
 
 - Add additional `id segment`s containing information that allows lookup in pre-existing systems (e.g. for a device, its serial number might be the only necessary `id segment` needed for a uniqueness perspective. However, adding the article/product/model number in addition likely allows routing to considerably more content that is relevant for this device)
 
