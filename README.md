@@ -14,19 +14,19 @@ The `PAC-ID` can also be represented in alternative formats, including as a QR c
 
 ## Introduction
 
-Laboratory software needs to unambiguously refer to real world objects and data. Typically, this is achieved by assigning unique identifiers to objects and data sets. As of today, each software product creates its own proprietary identifiers. With an increasing number of software products deployed in labs, objects usually end up having multiple identifiers. This impacts usability, causes errors and increases maintenance efforts.
+Laboratory software needs to unambiguously refer to real-world objects and data. Typically, this is achieved by assigning unique identifiers to objects and data sets. As of today, each software product creates its own proprietary identifiers. With an increasing number of software products deployed in labs, objects usually end up having multiple identifiers. This impacts usability, causes errors, and increases maintenance efforts.
 
-![The Balance is known under multiple identifiers as each system issues its own.](images/balance-multiple.svg)
+![The Balance is known under multiple identifiers, as each system issues its own.](images/balance-multiple.svg)
 
-_The Balance is known under **multiple** identifiers as each system issues its own._
+_The Balance is known under **multiple** identifiers, as each system issues its own._
 
-As part of the Smart Building Blocks for Digital Labs initiative, the **publicly addressable content identifier ("PAC-ID")** addresses this by promoting the re-use of already existing identifiers. The identifier is augmented with information about the issuing system and is represented in standardized formats, thus making it globally unique and reusable across system borders.
+As part of the [LabFreed initiative](https://labfreed.org), the **publicly addressable content identifier ("PAC-ID")** addresses this by promoting the re-use of already existing identifiers. The identifier is augmented with information about the issuing system and is represented in standardized formats, thus making it globally unique and reusable across system borders.
 
 ![All systems are using the same globally unique identifier for referring to the balance.](images/balance-same.svg)
 
 _All systems are using the **same** globally unique identifier for referring to the balance._
 
-The `PAC-ID` also serves as foundation for further Smart Building Blocks that provide functionality that wouldn’t be feasible with proprietary identifiers.
+The `PAC-ID` also serves as a foundation for further LabFreed Building Blocks that provide functionality that wouldn’t be feasible with proprietary identifiers.
 
 ## Specification
 
@@ -108,7 +108,7 @@ For legacy systems it is recommended to use identifiers as is (with URL-encoding
 
 ### Design Considerations for `identifier` and `id segment`
 
-Using multiple `id segment`s might seem like unnecessary overhead at first. Adding a few additional `id segment`s, however considerably increases the usefulness of `PAC-ID`s. In conjunction with other Smart Building Blocks, especially the `PAC-ID Resolver`. The `PAC-ID Resolver` is able to provide user-handovers/routing to systems that provide information about the corresponding `PAC-ID`. See [PAC-ID Resolver on GitHub](https://github.com/ApiniLabs/pac-id-resolver) for more info.
+Using multiple `id segment`s might seem like unnecessary overhead at first. Adding a few additional `id segment`s, however considerably increases the usefulness of `PAC-ID`s. In conjunction with other LabFreed Building Blocks, especially the `PAC-ID Resolver`. The `PAC-ID Resolver` is able to provide user-handovers/routing to systems that provide information about the corresponding `PAC-ID`. See [PAC-ID Resolver on GitHub](https://github.com/ApiniLabs/pac-id-resolver) for more info.
 
 - Add additional `id segment`s containing information that allows lookup in pre-existing systems (e.g. for a device, its serial number might be the only necessary `id segment` needed for a uniqueness perspective. However, adding the article/product/model number in addition likely allows routing to considerably more content that is relevant for this device)
 
@@ -133,31 +133,29 @@ Railroad diagram depicting the `extension`'s structure:
 
 It is RECOMMENDED to specify `name` and `type` of the `extension`. If specified, they MUST be followed by a `/`. 
 
-### Recommendation: Summary of What the PAC-ID Is Pointing At
-The first extension SHOULD provide a summary of what the `PAC-ID` points to. The `name` of this extension SHOULD be `SUM` and it SHOULD be in the [`T-REX`](https://github.com/ApiniLabs/T-REX) format. 
+### Recommendation: `Display Name` and `Summary` 
+The first extension SHOULD provide a `Display Name`. 
+A `Display Name`'s `name` MUST be `N`, the `type` MUST be `TEXT` and `data` MUST be in the [TEXT](/text-format.md) format.
 
-As an example, a `PAC-ID` pointing to a result set measured by a balance, where the summary contains the measured weight `WEIGHT` and the tare `TARE`:
-```
-HTTPS://PAC.METTORIUS.COM/-DR/8956757*SUM$TREX/WEIGHT$GRM:2.05+TARE$GRM:100.01
-```
+The second extension SHOULD provide a `Summary` of what the `PAC-ID` points to. 
+A `Summary`s `name` MUST be `SUM`, the `type` MUST be `TREX` and `data` MUST be in the [T-REX](https://github.com/ApiniLabs/T-REX) format. 
 
-Another example: a `PAC-ID` pointing to the balance itself, where the summary contains the balance's precision `PREC` and maximum supported weight `MAXWEIGHT`:
+
+Example: a `PAC-ID` pointing to a result with `Display Name` "Smørrebrød µ-Nutrients" measured by a balance, where the `Summary` contains the measured weight `WEIGHT` and the tare `TARE`:
 ```
-HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263*SUM$TREX/PREC$GRM:0.01+MAXWEIGHT$GRM:250
+HTTPS://PAC.METTORIUS.COM/-DR/8956757*N$TEXT/3SQHOW5NBOGUZDM4VWC9N3K99JT3WO0X28DAXDF*SUM$TREX/WEIGHT$GRM:2.05+TARE$GRM:100.01
 ```
 
 #### Short Notation
-If `name` and `type` of the first `extension` are omitted, it is assumed to be in `T-REX` format and to summarize the entity the `PAC-ID` refers to. 
+In oder to reduce the number of characters a short form MAY be used by omitting the `name` and `type` of the `Display Name` and `Summary`:
+If `name` and `type` of the first `extension` are omitted, it is implicitly assigned to be a `Display Name`.
+If `name` and `type` of the first and second `extension` are omitted, they are implicitly assigned to be a `Display Name` and `Summary`, respectively.
 
 Here is the short notation of the first example above:
 ```
-HTTPS://PAC.METTORIUS.COM/-DR/8956757*WEIGHT$GRM:2.05+TARE$GRM:100.01
+HTTPS://PAC.METTORIUS.COM/-DR/8956757*3SQHOW5NBOGUZDM4VWC9N3K99JT3WO0X28DAXDF/WEIGHT$GRM:2.05+TARE$GRM:100.01
 ```
 
-The short notation of the second example:
-```
-HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263*PREC$GRM:0.01+MAXWEIGHT$GRM:250
-```
 
 ## Terminology Used
 
