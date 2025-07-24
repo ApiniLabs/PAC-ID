@@ -116,7 +116,7 @@ Using multiple `id segment`s might seem like unnecessary overhead at first. Addi
 
 - Using the key/value syntax (`id segment key` `:` `id segment value`) with [well-known `id segment keys`](well-known-id-segment-keys.md) enables `PAC-ID` routing in generic contexts.
 
-See also these [recommendations](/recommendation-for-identifier-structure.md) for best practices on structuring the `identifier`.
+The [`PAC-CAT` Building Block](https://github.com/ApiniLabs/PAC-CAT) specifies a structure for the `identifier`. It is RECOMMENDED to adhere to this.
 
 ## PAC-ID Extension
 `PAC-ID`s CAN be extended with custom information in one or multiple `extension`s. They MUST be separated from the `PAC-ID` and from each other with a `*`.
