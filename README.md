@@ -20,7 +20,7 @@ Laboratory software needs to unambiguously refer to real-world objects and data.
 
 _The Balance is known under **multiple** identifiers, as each system issues its own._
 
-As part of the [LabFreed initiative](https://labfreed.org), the **publicly addressable content identifier ("PAC-ID")** addresses this by promoting the re-use of already existing identifiers. The identifier is augmented with information about the issuing system and is represented in standardized formats, thus making it globally unique and reusable across system borders.
+As part of the [LabFREED initiative](https://labfreed.org), the **publicly addressable content identifier ("PAC-ID")** addresses this by promoting the re-use of already existing identifiers. The identifier is augmented with information about the issuing system and is represented in standardized formats, thus making it globally unique and reusable across system borders.
 
 ![All systems are using the same globally unique identifier for referring to the balance.](images/balance-same.svg)
 
