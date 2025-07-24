@@ -42,6 +42,11 @@ A `PAC-ID` is composed of an `issuer` and `identifier` component. It is REQUIRED
 | `id segment key` | The `id segment key` describes the meaning of the `id segment value`. | <ul><li>RECOMMENDED to be a [well-known `id segment key`](well-known-id-segment-keys.md).</li><li>SHOULD be limited to `A-Z`, `0-9`, and `-+`.</li></ul> | "21"<br>(GS1 identifier for Serial Number) |
 | `id segment value` | The value corresponding to the `id segment key`. | <ul><li>SHOULD be limited to `A-Z`, `0-9`, and `-+`.</li></ul> | "210263"<br>(A Serial Number) |
 
+### Length Constraints
+The length of `PAC-ID` _including_ [`extensions`](#pac-id-extension) MUST NOT exceed 4296 characters. For maximum compatibility with older browsers it is RECOMMENDED to remain below 2000 characters.
+
+
+
 ### Serialization
 
 #### URL Format
