@@ -15,8 +15,6 @@
 **A:** In order to minimize the size of the QR code. When limiting the character set to `0–9`, `A–Z` (upper-case only), `space` `$` `%` `*` `+` `-` `.` `/` `:`, QR codes use a very efficient encoding that only consumes 5 1⁄2 bits/character.
 
 
-
-
 **Q: Why not using the ["tag:" scheme](https://en.wikipedia.org/wiki/Tag_URI_scheme)?**
 
 **A:** The `tag:` URI scheme would not allow to form valid URLs. This was considered a major disadvantage, see also question above on "Why is a PAC-ID represented as a HTTPS URL?".
@@ -29,7 +27,7 @@
 
 **Q: Are there any royalties for using a PAC-ID / implementing this specification?**
 
-**A:** No, PAC-IDs may be freely used. The specification itself is licenced as "Creative Commons Attribution Share Alike 4.0".
+**A:** No, PAC-IDs may be freely used. The specification itself is licensed as "Creative Commons Attribution Share Alike 4.0".
 
 
 **Q: Why not having a visual element inside the QR code?**
