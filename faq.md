@@ -15,10 +15,6 @@
 **A:** In order to minimize the size of the QR code. When limiting the character set to `0–9`, `A–Z` (upper-case only), `space` `$` `%` `*` `+` `-` `.` `/` `:`, QR codes use a very efficient encoding that only consumes 5 1⁄2 bits/character.
 
 
-**Q: Why is there a recommendation to restrict PAC-ID length?**
-
-**A:** `PAC-ID` are frequently printed to labels with QR codes, with constraints on their physical size (e.g. fit onto a vial caps). A [v4-L QR code](https://en.wikipedia.org/wiki/QR_code#Information_capacity) has been found to be an good compromise between verbosity and size, resulting in the recommendation of 100 characters for `issuer`and `identifier`.
-The maximum size of QR is achieved with [v40-L](https://en.wikipedia.org/wiki/QR_code#Information_capacity). This limits the size the extensions can take up.
 
 
 **Q: Why not using the ["tag:" scheme](https://en.wikipedia.org/wiki/Tag_URI_scheme)?**
