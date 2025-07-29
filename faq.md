@@ -37,7 +37,7 @@
 
 **Q: I have a better idea, how can I contribute?**
 
-**A:** Create a new issue suggesting your contribution here: [PAC-ID Issues](https://github.com/ApiniLabs/PAC-ID/issues). Search if such an issue already exists. If you like, make changes, commit them and create a pull request for your changes to be reviewed and eventually merged.
+**A:** Follow [these guidelines](https://github.com/ApiniLabs#apinilabs) how to contribute.
 
 
 **Q: I like that a PAC-ID points to my own (proprietary or local) service instances, e.g. to access my own ELN, LIMS, inventory system, ... How to achieve that?**
