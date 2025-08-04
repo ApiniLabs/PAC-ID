@@ -139,7 +139,10 @@ HTTPS://PAC.METTORIUS.COM/-DR/8956757*3SQHOW5NBOGUZDM4VWC9N3K99JT3WO0X28DAXDF/WE
 ## Recommendations
 
 ### Design Considerations for `identifier` and `id segment`
+#### Structure and Content
 Using multiple `id segment`s might seem like unnecessary overhead at first. Adding a few additional `id segment`s, however considerably increases the usefulness of `PAC-ID`s. In conjunction with other LabFreed Building Blocks, especially the `PAC-ID Resolver`. The `PAC-ID Resolver` is able to provide user-handovers/routing to systems that provide information about the corresponding `PAC-ID`. See [PAC-ID Resolver on GitHub](https://github.com/ApiniLabs/pac-id-resolver) for more info.
+
+- It is RECOMMENDED to follow these [recommendations](/recommendation-for-identifier-structure.md) for best practices on structuring the `identifier`.
 
 - Add additional `id segment`s containing information that allows lookup in pre-existing systems (e.g. for a device, its serial number might be the only necessary `id segment` needed for a uniqueness perspective. However, adding the article/product/model number in addition likely allows routing to considerably more content that is relevant for this device)
 
@@ -147,9 +150,9 @@ Using multiple `id segment`s might seem like unnecessary overhead at first. Addi
 
 - Using the key/value syntax (`id segment key` `:` `id segment value`) with [well-known `id segment keys`](well-known-id-segment-keys.md) enables `PAC-ID` routing in generic contexts.
 
-See also these [recommendations](/recommendation-for-identifier-structure.md) for best practices on structuring the `identifier`.
 
-### Size Constraints
+
+#### Overall Length
 While adding more `id segment` increased the `PAC-ID`s usefulness, printing it as QR code introduces size constraints, due to the physical space available being limited (e.g. fit onto a vial caps).
 A [v4-L QR code](https://en.wikipedia.org/wiki/QR_code#Information_capacity) has been found to be an good compromise between verbosity and size. Thus it is RECOMMENDED the combined length of `issuer` and `identifier` does not exceed 100 characters.
 
@@ -157,7 +160,7 @@ The maximum size of QR codes ([v40-L](https://en.wikipedia.org/wiki/QR_code#Info
 It is RECOMMENDED the combined length of *all* the `extensions` of a `PAC-ID` does not exceed 4100 characters.
 
 
-### Identifier Encodings
+#### Encoding Efficiency
 If designing new systems based on existing identifiers, consider using Base36 encoded `PAC-ID` `identifier`s for maximizing efficiency when embedded in a QR Code or DataMatrix codes.[^2]
 
 [^2]: When using [Base36](https://en.wikipedia.org/wiki/Base36) encoding, the character set required is limited to `0–9`, `A–Z` (upper-case only), which allows efficient encoding that for example only consumes 5 1⁄2 bits/character in a QR code.
