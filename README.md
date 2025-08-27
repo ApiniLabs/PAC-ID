@@ -20,7 +20,7 @@ Laboratory software needs to unambiguously refer to real-world objects and data.
 
 _The Balance is known under **multiple** identifiers, as each system issues its own._
 
-As part of the [LabFreed initiative](https://labfreed.org), the **publicly addressable content identifier ("PAC-ID")** addresses this by promoting the re-use of already existing identifiers. The identifier is augmented with information about the issuing system and is represented in standardized formats, thus making it globally unique and reusable across system borders.
+As part of the [LabFREED initiative](https://labfreed.org), the **publicly addressable content identifier ("PAC-ID")** addresses this by promoting the re-use of already existing identifiers. The identifier is augmented with information about the issuing system and is represented in standardized formats, thus making it globally unique and reusable across system borders.
 
 ![All systems are using the same globally unique identifier for referring to the balance.](images/balance-same.svg)
 
@@ -155,6 +155,8 @@ Using multiple `id segment`s might seem like unnecessary overhead at first. Addi
 - Add `id segment`s that partition by resource type or domain. (e.g. a CDS can only provide more information about Chromatography runs, but not MS runs)
 
 - Using the key/value syntax (`id segment key` `:` `id segment value`) with [well-known `id segment keys`](well-known-id-segment-keys.md) enables `PAC-ID` routing in generic contexts.
+
+The [`PAC-CAT` Building Block](https://github.com/ApiniLabs/PAC-CAT) specifies a structure for the `identifier`. It is RECOMMENDED to adhere to this.
 
 
 #### Overall Length
