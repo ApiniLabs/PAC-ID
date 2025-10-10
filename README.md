@@ -130,7 +130,7 @@ HTTPS://PAC.METTORIUS.COM/-DR/8956757*N$TEXT/3SQHOW5NBOGUZDM4VWC9N3K99JT3WO0X28D
 
 #### Short Notation
 
-In oder to reduce the number of characters a short form MAY be used by omitting the `name` and `type` of the `Display Name` and `Summary`:
+In order to reduce the number of characters a short form MAY be used by omitting the `name` and `type` of the `Display Name` and `Summary`:
 If `name` and `type` of the first `extension` are omitted, it is implicitly assigned to be a `Display Name`.
 If `name` and `type` of the first and second `extension` are omitted, they are implicitly assigned to be a `Display Name` and `Summary`, respectively.
 
