@@ -47,19 +47,19 @@ NEW SECTION <br>
 >>> 
 </span>
 
-## Issuing derived `PAC-ID`s
+### Issuing derived `PAC-ID`s
 Derived physical or logical objects often need their own identifier while still retaining an explicit backreference to the source object. Examples include aliquots, subsamples, dilutions, repackaged units, or other derived items.
-
 `PAC-ID` supports this by allowing additional id segments to be appended to an existing `PAC-ID`.
 
 A derived `PAC-ID` MAY be formed by appending one or more id segments to an existing `PAC-ID`.
+If the issuer of the original `PAC-ID` also issues the derived `PAC-ID`, appended id segments MAY be added without a derivation namespace segment.
 If a party other than the issuer of the original `PAC-ID` issues the derived `PAC-ID`, the first appended segment introduced by that party MUST be a `derivation namespace segment`.
-A derivation namespace segment MUST have the form: `+<namespace>`, where <namespace> identifies the party that issues the subsequent appended segments, typically by a controlled domain name.
+
+A derivation namespace segment MUST have the form: `+<namespace>`, where `<namespace>` identifies the party that issues the subsequent appended segments, typically by a controlled domain name.
 Any id segment whose first character is `+` is a derivation namespace segment and MUST NOT be interpreted as an ordinary identifying segment.
 
 A derivation namespace segment establishes a new namespace boundary. All following appended id segments belong to that namespace until another derivation namespace segment occurs.
 
-If the issuer of the prefix `PAC-ID` also issues the derived `PAC-ID`, appended id segments MAY be added without a derivation namespace segment.
 
 Multiple derivation namespace segments MAY occur in a single `PAC-ID`, allowing chained derivations by different parties.
 
@@ -80,11 +80,11 @@ Examples:
 <<<
 </span>
 
-## PAC-ID Extension
+### PAC-ID Extension
 
 `PAC-ID`s CAN be extended with custom information in one or multiple `extension`s. They MUST be separated from the `PAC-ID` and from each other with a `*`.
 
-### Structure of an `extension`
+#### Structure of an `extension`
 
 Railroad diagram depicting the `extension`'s structure: 
 ![Structure of extensions](images/railroad-diagram-extension.svg)
@@ -97,7 +97,7 @@ Railroad diagram depicting the `extension`'s structure:
 
 It is RECOMMENDED to specify `name` and `type` of the `extension`. If specified, they MUST be followed by a `/`. 
 
-### Recommendation: `Display Name` and `Summary` 
+#### Recommendation: `Display Name` and `Summary` 
 
 The first extension SHOULD provide a `Display Name`. 
 A `Display Name`'s `name` MUST be `N`, the `type` MUST be `TEXT` and `data` MUST be in the [TEXT](/text-format.md) format.
@@ -111,7 +111,7 @@ Example: a `PAC-ID` pointing to a result with `Display Name` "Smørrebrød µ-Nu
 HTTPS://PAC.METTORIUS.COM/-DR/8956757*N$TEXT/3SQHOW5NBOGUZDM4VWC9N3K99JT3WO0X28DAXDF*SUM$TREX/WEIGHT$GRM:2.05+TARE$GRM:100.01
 ```
 
-#### Short Notation
+### Short Notation
 
 In order to reduce the number of characters a short form MAY be used by omitting the `name` and `type` of the `Display Name` and `Summary`:
 If `name` and `type` of the first `extension` are omitted, it is implicitly assigned to be a `Display Name`.
@@ -143,11 +143,11 @@ HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263
 It is RECOMMENDED that the URL locates a human readable web page which at least discloses information about the `issuer`. The URL MAY also point to a default [`PAC-ID Resolver`](https://github.com/ApiniLabs/PAC-ID-Resolver) that is implemented as a web application on that URL.
 
 
-## Transmission
+### Transmission
 
 `PAC-ID`s MAY be transmitted by any means adequate for the serialization format (URL Format) of `PAC-ID`s (e.g. QR code, NDEF, iBeacon, etc.).
 
-### Visual Markers
+#### Visual Markers
 
 If a `PAC-ID` is represented as QR code or data matrix code, a visual marker MUST be added.
 
@@ -155,7 +155,7 @@ If a `PAC-ID` is represented as QR code or data matrix code, a visual marker MUS
 
 _The example PAC-ID `HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263` represented as QR code._
 
-#### Placement of the Visual Marker
+##### Placement of the Visual Marker
 
 - The visual marker MUST be placed to the right or to the bottom of the 2D-code.
 - The spacing between visual marker and the 2D-code MUST match its minimum quiet zone (yellow area, e.g. 4 modules for QR codes, 1 module for Data Matrix codes)
