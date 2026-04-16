@@ -50,18 +50,18 @@ NEW SECTION <br>
 ## Issuing derived `PAC-ID`s
 Derived physical or logical objects often need their own identifier while still retaining an explicit backreference to the source object. Examples include aliquots, subsamples, dilutions, repackaged units, or other derived items.
 
-PAC-ID supports this by allowing additional id segments to be appended to an existing PAC-ID.
+`PAC-ID` supports this by allowing additional id segments to be appended to an existing `PAC-ID`.
 
-A derived PAC-ID MAY be formed by appending one or more id segments to an existing PAC-ID.
-If a party other than the issuer of the original PAC-ID issues the derived PAC-ID, the first appended segment introduced by that party MUST be a `derivation namespace segment`.
+A derived `PAC-ID` MAY be formed by appending one or more id segments to an existing `PAC-ID`.
+If a party other than the issuer of the original `PAC-ID` issues the derived `PAC-ID`, the first appended segment introduced by that party MUST be a `derivation namespace segment`.
 A derivation namespace segment MUST have the form: `+<namespace>`, where <namespace> identifies the party that issues the subsequent appended segments, typically by a controlled domain name.
 Any id segment whose first character is `+` is a derivation namespace segment and MUST NOT be interpreted as an ordinary identifying segment.
 
 A derivation namespace segment establishes a new namespace boundary. All following appended id segments belong to that namespace until another derivation namespace segment occurs.
 
-If the issuer of the prefix PAC-ID also issues the derived PAC-ID, appended id segments MAY be added without a derivation namespace segment.
+If the issuer of the prefix `PAC-ID` also issues the derived `PAC-ID`, appended id segments MAY be added without a derivation namespace segment.
 
-Multiple derivation namespace segments MAY occur in a single PAC-ID, allowing chained derivations by different parties.
+Multiple derivation namespace segments MAY occur in a single `PAC-ID`, allowing chained derivations by different parties.
 
 Examples:
 > Original:
