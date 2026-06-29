@@ -38,47 +38,46 @@ A `PAC-ID` is composed of an `issuer` and `identifier` component. It is REQUIRED
 | :--- | :--- | :--- | :--- |
 | `issuer` | The party which issued the identifier and knows what the identifier refers to. | <ul><li>MUST be a valid domain name according to [RFC 1035](https://www.ietf.org/rfc/rfc1035.html), when prefixed with "PAC.".</li><li>That domain name or its PAC. subdomain SHOULD be registered to the issuing party.</li><li>SHOULD contain only the following characters `A-Z`, `0-9`, `-`, and `.`</li> </ul> | "METTORIUS.COM"<br>(The manufacturer of the balance) |
 | `identifier` | The identifier itself. | <ul><li>MUST consist of one or more `id segments` separated by `/`.</li><li>At least one `id segment` MUST be non-empty.<li>MUST not exceed 256 characters.</li> <li> See also [Design Considerations for `identifier` and `id segment`](#design-considerations-for-identifier-and-id-segment) </ul>| "-MD/21:210263"<br>(An identifier for one particular balance) |
-| `id segment` | The `id segment` is a part of an `identifier` that can stand on its own. Typically used to organize `identifier`s within an `issuer`. | <ul><li>MUST be a valid `hsegment` according to [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt), but without `*` (see [PAC-ID Extension](#pac-id-extension)). </li><li>SHOULD be limited to `A-Z`, `0-9`, and `:-+` for new designs.</li> </li><li style="color:red">MUST NOT start with characters `+` or `-`, unless the segment starts a new namespace or category. </li> <li>CAN be an `id segment key` and `id segment value` pair separated by `:`.</li> </ul> | "21:210263"<br>(An id segment containing a serial number) |
+| `id segment` | The `id segment` is a part of an `identifier` that can stand on its own. Typically used to organize `identifier`s within an `issuer`. | <ul><li>MUST be a valid `hsegment` according to [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt), but without `*` (see [PAC-ID Extension](#pac-id-extension)). </li><li>SHOULD be limited to `A-Z`, `0-9`, and `:-+` for new designs.</li> </li><li>MUST NOT start with character `+`, except for [`namespace segment`](#Issuing-derived-`PAC-ID`s). </li> <li> SHOULD NOT start with character `-`, unless used in context of [PAC-CAT](https://github.com/ApiniLabs/PAC-CAT). </li> <li>CAN be an `id segment key` and `id segment value` pair separated by `:`.</li> </ul> | "21:210263"<br>(An id segment containing a serial number) |
 | `id segment key` | The `id segment key` describes the meaning of the `id segment value`. | <ul><li>RECOMMENDED to be a [well-known `id segment key`](well-known-id-segment-keys.md).</li><li>SHOULD be limited to `A-Z`, `0-9`, and `-+`.</li></ul> | "21"<br>(GS1 identifier for Serial Number) |
 | `id segment value` | The value corresponding to the `id segment key`. | <ul><li>SHOULD be limited to `A-Z`, `0-9`, and `-+`.</li></ul> | "210263"<br>(A Serial Number) |
 
-<span  style="color:red">
-NEW SECTION <br>
->>> 
-</span>
 
 ### Issuing derived `PAC-ID`s
-Derived physical or logical objects often need their own identifier while still retaining an explicit backreference to the source object. Examples include aliquots, subsamples, dilutions, repackaged units, or other derived items.
-`PAC-ID` supports this by allowing additional id segments to be appended to an existing `PAC-ID`.
 
-A derived `PAC-ID` MAY be formed by appending one or more id segments to an existing `PAC-ID`.
-If the issuer of the original `PAC-ID` also issues the derived `PAC-ID`, appended id segments MAY be added without a derivation namespace segment.
-If a party other than the issuer of the original `PAC-ID` issues the derived `PAC-ID`, the first appended segment introduced by that party MUST be a `derivation namespace segment`.
+Items are often related hierarchically. For example, a product may be produced in batches, and each batch may be split into separate containers. `PAC-ID`, with its segmented structure, is well suited to represent such relationships because each additional segment can make the identifier more specific while retaining the link to the more general item.
+An `issuer` MAY form derived `PAC-ID`s by appending one or more id segments to an existing `PAC-ID`.
 
-A derivation namespace segment MUST have the form: `+<namespace>`, where `<namespace>` identifies the party that issues the subsequent appended segments, typically by a controlled domain name.
-Any id segment whose first character is `+` is a derivation namespace segment and MUST NOT be interpreted as an ordinary identifying segment.
+Example: 
+```
+A product from OmniZyme:
+HTTPS://PAC.OMNIZYME.COM/-MS/240:AMYLASE
 
-A derivation namespace segment establishes a new namespace boundary. All following appended id segments belong to that namespace until another derivation namespace segment occurs.
+A batch of this product:
+HTTPS://PAC.OMNIZYME.COM/-MS/240:AMYLASE/10:AB9876
+
+A container derived from that batch:
+HTTPS://PAC.OMNIZYME.COM/-MS/240:AMYLASE/10:AB9876/21:9876
+```
+
+If a laboratory such as AcmeLabs creates aliquots from a container, simply appending segments would make it appear as if OmniZyme issued them, which would undermine issuer authority.
+To preserve clear attribution, a third party MUST introduce a derivation namespace segment when extending a `PAC-ID`. This segment has the form `+<namespace>`, where `<namespace>` identifies the issuing party, typically by a controlled domain name.
+A derivation namespace segment establishes a new namespace boundary. All subsequent appended segments belong to that namespace until another derivation namespace segment is introduced.
+
+Example:
+```
+Derived `PAC-ID` for an aliquot, assigned by AcmeLabs:
+HTTPS://PAC.OMNIZYME.COM/-MS/240:AMYLASE/10:AB9876/21:9876/+ACMELABS.COM/250:1
+```
 
 
 Multiple derivation namespace segments MAY occur in a single `PAC-ID`, allowing chained derivations by different parties.
+Example:
+```
+HTTPS://PAC.OMNIZYME.COM/-MS/240:AMYLASE/10:AB9876/21:9876/+ACMELABS.COM/250:1+PARTNERLAB.ORG/TESTPORTION:A
+```
 
-Examples:
-> Original:
-> HTTPS://PAC.METTORIUS.COM/-MS/240:BALCLEAN/10:AB9876
->
-> Derived for a container number by the same issuer:
-> HTTPS://PAC.METTORIUS.COM/-MS/240:BALCLEAN/10:AB9876/21:9876
->
-> Derived PAC-ID for an aliquot by another party:
-> HTTPS://PAC.METTORIUS.COM/-MS/240:BALCLEAN/10:AB9876/21:9876+ACMELABS.COM/250:1
->
-> Further derived by yet another party:
-> HTTPS://PAC.METTORIUS.COM/-MS/240:BALCLEAN/10:AB9876/21:9876+ACMELABS.COM/250:1/+PARTNERLAB.ORG/TESTPORTION:A
 
-<span  style="color:red">
-<<<
-</span>
 
 ### PAC-ID Extension
 
