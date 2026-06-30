@@ -37,11 +37,89 @@ A `PAC-ID` is composed of an `issuer` and `identifier` component. It is REQUIRED
 | **Name** | **Meaning** | **Technical Requirements** | **Example** |
 | :--- | :--- | :--- | :--- |
 | `issuer` | The party which issued the identifier and knows what the identifier refers to. | <ul><li>MUST be a valid domain name according to [RFC 1035](https://www.ietf.org/rfc/rfc1035.html), when prefixed with "PAC.".</li><li>That domain name or its PAC. subdomain SHOULD be registered to the issuing party.</li><li>SHOULD contain only the following characters `A-Z`, `0-9`, `-`, and `.`</li> </ul> | "METTORIUS.COM"<br>(The manufacturer of the balance) |
-| `identifier` | The identifier itself. | <ul><li>MUST consist of one or more `id segments` separated by `/`.</li><li>At least one `id segment` MUST be non-empty.</li><li>MUST not exceed 256 characters.</li> <li> See also [Design Considerations for `identifier` and `id segment`](#design-considerations-for-identifier-and-id-segment) </ul>| "-MD/21:210263"<br>(An identifier for one particular balance) |
-| `id segment` | The `id segment` is a part of an `identifier` that can stand on its own. Typically used to organize `identifier`s within an `issuer`. | <ul><li>MUST be a valid `hsegment` according to [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt), but without `*` (see [PAC-ID Extension](#pac-id-extension)). </li><li>SHOULD be limited to `A-Z`, `0-9`, and `:-+` for new designs.</li><li>CAN be an `id segment key` and `id segment value` pair separated by `:`.</li></ul> | "21:210263"<br>(An id segment containing a serial number) |
+| `identifier` | The identifier itself. | <ul><li>MUST consist of one or more `id segments` separated by `/`.</li><li>At least one `id segment` MUST be non-empty.<li>MUST not exceed 256 characters.</li> <li> See also [Design Considerations for `identifier` and `id segment`](#design-considerations-for-identifier-and-id-segment) </ul>| "-MD/21:210263"<br>(An identifier for one particular balance) |
+| `id segment` | The `id segment` is a part of an `identifier` that can stand on its own. Typically used to organize `identifier`s within an `issuer`. | <ul><li>MUST be a valid `hsegment` according to [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt), but without `*` (see [PAC-ID Extension](#pac-id-extension)). </li><li>SHOULD be limited to `A-Z`, `0-9`, and `:-+` for new designs.</li> </li><li>MUST NOT start with character `+`, except for [namespace segments](#Issuing-derived-`PAC-ID`s). </li> <li> SHOULD NOT start with character `-`, unless used in context of [PAC-CAT](https://github.com/ApiniLabs/PAC-CAT). </li> <li>CAN be an `id segment key` and `id segment value` pair separated by `:`.</li> </ul> | "21:210263"<br>(An id segment containing a serial number) |
 | `id segment key` | The `id segment key` describes the meaning of the `id segment value`. | <ul><li>RECOMMENDED to be a [well-known `id segment key`](well-known-id-segment-keys.md).</li><li>SHOULD be limited to `A-Z`, `0-9`, and `-+`.</li></ul> | "21"<br>(GS1 identifier for Serial Number) |
 | `id segment value` | The value corresponding to the `id segment key`. | <ul><li>SHOULD be limited to `A-Z`, `0-9`, and `-+`.</li></ul> | "210263"<br>(A Serial Number) |
 
+
+### Issuing derived `PAC-ID`s
+
+Items are often related hierarchically. For example, a product may be produced in batches, and each batch may be split into separate containers. `PAC-ID`, with its segmented structure, is well suited to represent such relationships because each additional segment can make the identifier more specific while retaining the link to the more general item.
+An `issuer` MAY form derived `PAC-ID`s by appending one or more id segments to an existing `PAC-ID`.
+
+Example: 
+```
+A product from OmniZyme:
+HTTPS://PAC.OMNIZYME.COM/-MS/240:AMYLASE
+
+A batch of this product:
+HTTPS://PAC.OMNIZYME.COM/-MS/240:AMYLASE/10:AB9876
+
+A container derived from that batch:
+HTTPS://PAC.OMNIZYME.COM/-MS/240:AMYLASE/10:AB9876/21:9876
+```
+
+If a laboratory such as AcmeLabs creates aliquots from a container, simply appending segments would make it appear as if OmniZyme issued them, which would undermine issuer authority.
+To preserve clear attribution, a third party MUST introduce a derivation namespace segment when extending a `PAC-ID`. This segment has the form `+<namespace>`, where `<namespace>` identifies the issuing party, typically by a controlled domain name.
+A derivation namespace segment establishes a new namespace boundary. All subsequent appended segments belong to that namespace until another derivation namespace segment is introduced.
+
+Example:
+```
+Derived `PAC-ID` for an aliquot, assigned by AcmeLabs:
+HTTPS://PAC.OMNIZYME.COM/-MS/240:AMYLASE/10:AB9876/21:9876/+ACMELABS.COM/250:1
+```
+
+
+Multiple derivation namespace segments MAY occur in a single `PAC-ID`, allowing chained derivations by different parties.
+Example:
+```
+HTTPS://PAC.OMNIZYME.COM/-MS/240:AMYLASE/10:AB9876/21:9876/+ACMELABS.COM/250:1+PARTNERLAB.ORG/TESTPORTION:A
+```
+
+
+
+### PAC-ID Extension
+
+`PAC-ID`s CAN be extended with custom information in one or multiple `extension`s. They MUST be separated from the `PAC-ID` and from each other with a `*`.
+
+#### Structure of an `extension`
+
+Railroad diagram depicting the `extension`'s structure: 
+![Structure of extensions](images/railroad-diagram-extension.svg)
+
+| **Name** | **Meaning** | **Technical Requirements** |
+| :--- | :--- | :--- | 
+| `name` | Name of the extension | SHOULD indicate the purpose and scope of the extension|.
+| `type` | Identifies the format of `data` | SHOULD be a [well known extension types](/well-known-extension-types.md).|
+| `data` | Attached data | MUST be in the format, specified by `type`. <br> MUST NOT contain the character `/`
+
+It is RECOMMENDED to specify `name` and `type` of the `extension`. If specified, they MUST be followed by a `/`. 
+
+#### Recommendation: `Display Name` and `Summary` 
+
+The first extension SHOULD provide a `Display Name`. 
+A `Display Name`'s `name` MUST be `N`, the `type` MUST be `TEXT` and `data` MUST be in the [TEXT](/text-format.md) format.
+
+The second extension SHOULD provide a `Summary` of what the `PAC-ID` points to. 
+A `Summary`s `name` MUST be `SUM`, the `type` MUST be `TREX` and `data` MUST be in the [T-REX](https://github.com/ApiniLabs/T-REX) format. 
+
+
+Example: a `PAC-ID` pointing to a result with `Display Name` "Smørrebrød µ-Nutrients" measured by a balance, where the `Summary` contains the measured weight `WEIGHT` and the tare `TARE`:
+```
+HTTPS://PAC.METTORIUS.COM/-DR/8956757*N$TEXT/3SQHOW5NBOGUZDM4VWC9N3K99JT3WO0X28DAXDF*SUM$TREX/WEIGHT$GRM:2.05+TARE$GRM:100.01
+```
+
+### Short Notation
+
+In order to reduce the number of characters a short form MAY be used by omitting the `name` and `type` of the `Display Name` and `Summary`:
+If `name` and `type` of the first `extension` are omitted, it is implicitly assigned to be a `Display Name`.
+If `name` and `type` of the first and second `extension` are omitted, they are implicitly assigned to be a `Display Name` and `Summary`, respectively.
+
+Here is the short notation of the first example above:
+```
+HTTPS://PAC.METTORIUS.COM/-DR/8956757*3SQHOW5NBOGUZDM4VWC9N3K99JT3WO0X28DAXDF/WEIGHT$GRM:2.05+TARE$GRM:100.01
+```
 ### Serialization
 
 #### URL Format
@@ -62,6 +140,7 @@ HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263
 ```
 
 It is RECOMMENDED that the URL locates a human readable web page which at least discloses information about the `issuer`. The URL MAY also point to a default [`PAC-ID Resolver`](https://github.com/ApiniLabs/PAC-ID-Resolver) that is implemented as a web application on that URL.
+
 
 ### Transmission
 
@@ -86,7 +165,7 @@ _The example PAC-ID `HTTPS://PAC.METTORIUS.COM/-MD/240:BAL500/21:210263` represe
 
 _Placement of the Visual Marker_
 
-##### Visual Marker Design
+#### Visual Marker Design
 
 - Each visual marker SHALL consist of marker squares (blue), which consist of 5x5 2D-code modules each.
 - There MUST be one 2D code module of space (green) between the visual marker squares.
@@ -96,48 +175,6 @@ _Placement of the Visual Marker_
 
 _Visual Marker Design_
 
-
-## PAC-ID Extension
-
-`PAC-ID`s CAN be extended with custom information in one or multiple `extension`s. They MUST be separated from the `PAC-ID` and from each other with a `*`.
-
-### Structure of an `extension`
-
-Railroad diagram depicting the `extension`'s structure: 
-![Structure of extensions](images/railroad-diagram-extension.svg)
-
-| **Name** | **Meaning** | **Technical Requirements** |
-| :--- | :--- | :--- | 
-| `name` | Name of the extension | SHOULD indicate the purpose and scope of the extension|.
-| `type` | Identifies the format of `data` | SHOULD be a [well known extension types](/well-known-extension-types.md).|
-| `data` | Attached data | MUST be in the format, specified by `type`. <br> MUST NOT contain the character `/`
-
-It is RECOMMENDED to specify `name` and `type` of the `extension`. If specified, they MUST be followed by a `/`. 
-
-### Recommendation: `Display Name` and `Summary` 
-
-The first extension SHOULD provide a `Display Name`. 
-A `Display Name`'s `name` MUST be `N`, the `type` MUST be `TEXT` and `data` MUST be in the [TEXT](/text-format.md) format.
-
-The second extension SHOULD provide a `Summary` of what the `PAC-ID` points to. 
-A `Summary`s `name` MUST be `SUM`, the `type` MUST be `TREX` and `data` MUST be in the [T-REX](https://github.com/ApiniLabs/T-REX) format. 
-
-
-Example: a `PAC-ID` pointing to a result with `Display Name` "Smørrebrød µ-Nutrients" measured by a balance, where the `Summary` contains the measured weight `WEIGHT` and the tare `TARE`:
-```
-HTTPS://PAC.METTORIUS.COM/-DR/8956757*N$TEXT/3SQHOW5NBOGUZDM4VWC9N3K99JT3WO0X28DAXDF*SUM$TREX/WEIGHT$GRM:2.05+TARE$GRM:100.01
-```
-
-#### Short Notation
-
-In order to reduce the number of characters a short form MAY be used by omitting the `name` and `type` of the `Display Name` and `Summary`:
-If `name` and `type` of the first `extension` are omitted, it is implicitly assigned to be a `Display Name`.
-If `name` and `type` of the first and second `extension` are omitted, they are implicitly assigned to be a `Display Name` and `Summary`, respectively.
-
-Here is the short notation of the first example above:
-```
-HTTPS://PAC.METTORIUS.COM/-DR/8956757*3SQHOW5NBOGUZDM4VWC9N3K99JT3WO0X28DAXDF/WEIGHT$GRM:2.05+TARE$GRM:100.01
-```
 
 
 ## Recommendations
