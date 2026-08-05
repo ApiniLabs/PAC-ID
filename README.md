@@ -130,7 +130,7 @@ A `PAC-ID` can be represented as a text in the form of a URL as follows:
 | :--- | :--- |
 | `scheme` | Always `"HTTPS"`. |
 | `host` | The `issuer` of the `PAC-ID`, prefixed by `"PAC."`. |
-| `path` | The `identifier` of the `PAC-ID`, potentially followed by `*` and arbitrary content. `*` and subsequent characters are not part of the `PAC-ID` and MUST be ignored (extension space, see [PAC-ID Extension](#pac-id-extension)).<br> A trailing '/' MUST NOT be considered part of the identifier. |
+| `path` | The `identifier` of the `PAC-ID`, potentially followed by `*` and arbitrary content. `*` and subsequent characters are not part of the `PAC-ID` and MUST be ignored (extension space, see [PAC-ID Extension](#pac-id-extension)).<br> The identifier MUST NOT end with a trailing '/'. RECOMM of the is not permitted A trailing '/' MUST NOT be considered part of the identifier. |
 
 [^1]: according to [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986#appendix-A). All other URI components MUST be empty.
 
